@@ -2,6 +2,10 @@
 
 Bees lab implementation for SE 2811.
 
+## Group: DaBeest
+- Jonathan Keane
+- Kyle Senebouttarath
+
 ## Lab Notes
 
 - Write out the responsibilities of each class
@@ -13,6 +17,3 @@ Bees lab implementation for SE 2811.
     - Example: A car has wheels -> everything related to wheels should be done in the Car class
 
 <img src="bee-1.jpg" width="300">
-
-TODO: Delete dis
-minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee minecraft bee 
