@@ -4,19 +4,25 @@ public class BabyBee extends Bee {
 
     //---------------- CONSTANTS ----------------\\
 
-    private static final int EGG = 10;
+    private static final int COLLISION_RADIUS = 10;
+    private static final int MAX_ENERGY = 10;
+    private static final int INIT_ENERGY = 10;
+    private static final int MOVE_DISTANCE = 30;
+    private static final String IMG = "";
+    private static final String DESC = "";
 
     //---------------- METHODS ----------------\\
 
     public BabyBee(int startX, int startY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String desc, int moveDistance) {
-        super(startX, startY, collisionRadius, maxEnergy, energy, imgUrl, desc, moveDistance);
+        super(startX, startY, COLLISION_RADIUS, MAX_ENERGY, INIT_ENERGY, IMG, DESC, MOVE_DISTANCE);
     }
 
     public void drawBee() {
-
+        organismContainer.setLayoutX(centerX + COLLISION_RADIUS);
+        organismContainer.setLayoutY(centerY + COLLISION_RADIUS);
     }
 
-    public void collide(Organism otherOrgansim) {
+    public void collide(Organism otherOrganism) {
 
     }
 
