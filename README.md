@@ -16,4 +16,4 @@ Bees lab implementation for SE 2811.
     - This should be considered as the "meaning" of the class IN THE DOMAIN (no programming terms)
     - Example: A car has wheels -> everything related to wheels should be done in the Car class
 
-<img src="bee-1.jpg" width="300">
+<img src="Assets/bee-1.jpg" width="300">
