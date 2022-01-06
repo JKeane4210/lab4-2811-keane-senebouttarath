@@ -10,7 +10,7 @@ public abstract class Organism {
 
     //-------- CONSTANTS --------\\
 
-    private static int ENERGY_BAR_HEIGHT = 10;
+    private static final int ENERGY_BAR_HEIGHT = 10;
 
     //-------- ATTRIBUTES --------\\
 
@@ -24,7 +24,7 @@ public abstract class Organism {
 
     protected String description;
 
-    private VBox organismContainer;
+    protected VBox organismContainer;
     private Rectangle energyBackgroundBar;
     private Rectangle energyBar;
     private Label energyBarText;

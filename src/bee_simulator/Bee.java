@@ -1,10 +1,21 @@
 package bee_simulator;
 
-public abstract class Bee {
+public abstract class Bee extends Organism {
+
+    //---------------- ATTRIBUTES ----------------\\
 
     protected int moveDistance;
     protected int targetX;
     protected int targetY;
+
+    //---------------- METHODS ----------------\\
+
+    //-------- CONSTRUCTORS
+
+    public Bee(int startX, int startY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String desc, int moveDistance) {
+        super(startX, startY, collisionRadius, maxEnergy, energy, imgUrl, desc);
+        this.moveDistance = moveDistance;
+    }
 
     public void move() {
 
