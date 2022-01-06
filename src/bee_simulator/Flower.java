@@ -19,7 +19,12 @@ public abstract class Flower extends Organism {
         organismContainer.setLayoutY(centerY);
     }
 
-    public void interactWithBee(Bee bee) {
-
+    @Override
+    public void collide(Organism otherOrganism) {
+        if (otherOrganism instanceof Bee) {
+            interactWithBee((Bee)otherOrganism);
+        }
     }
+
+    public abstract void interactWithBee(Bee bee);
 }
