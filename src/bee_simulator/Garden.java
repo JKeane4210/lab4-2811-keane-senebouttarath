@@ -29,9 +29,9 @@ public class Garden {
             int x = (int)(Math.random() * GARDEN_WIDTH);
             int y = (int)(Math.random() * GARDEN_HEIGHT);
             if (i % 2 == 0) {
-                flowers.add(new Rose(x, y, 10, 10, 10, ""));
+                flowers.add(new Rose(x, y));
             } else {
-                flowers.add(new Lily(x, y, 10, 10, 10, ""));
+                flowers.add(new Lily(x, y));
             }
         }
         for (int i = 0; i < INITIAL_BEE_COUNT; ++i) {

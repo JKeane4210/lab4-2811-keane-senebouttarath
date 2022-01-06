@@ -1,8 +1,12 @@
 package bee_simulator;
 
 public class Lily extends Flower {
-    public Lily(int centerX, int centerY, int collisionRadius, int maxEnergy, int energy, String description) {
-        super(centerX, centerY, collisionRadius, maxEnergy, energy, "Assets/lily.png", description);
+    private static final int LILY_INITIAL_HEALTH = 80;
+    private static final int LILY_MAX_HEALTH = 120;
+    private static final int LILY_COLLISION_RADIUS = 12;
+
+    public Lily(int centerX, int centerY) {
+        super(centerX, centerY, LILY_COLLISION_RADIUS, LILY_MAX_HEALTH, LILY_INITIAL_HEALTH, "Assets/lily.png", "DESCRIPTION");
     }
 
     @Override
