@@ -13,7 +13,7 @@ public class BigBee extends Bee {
 
     //---------------- METHODS ----------------\\
 
-    public BigBee(int startX, int startY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String desc, int moveDistance) {
+    public BigBee(int startX, int startY) {
         super(startX, startY, COLLISION_RADIUS, MAX_ENERGY, INIT_ENERGY, IMG, DESC, MOVE_DISTANCE);
     }
 
