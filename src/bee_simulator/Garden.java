@@ -26,7 +26,6 @@ public class Garden {
     @FXML
     private Pane theGarden;                 // capture the pane we are drawing on from JavaFX
 
-
     public Garden() {
         for (int i = 0; i < INITIAL_FLOWER_COUNT; ++i) {
             int x = (int)(Math.random() * GARDEN_WIDTH);
