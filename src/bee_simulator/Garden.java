@@ -122,11 +122,30 @@ public class Garden {
     }
 
     public void update() {
-
+        for (Bee bee: bees) {
+            for (Bee otherBee: bees) {
+                if (bee != otherBee) {
+                    if (bee.isCollided(otherBee)) {
+                        bee.collide(otherBee);
+                    }
+                }
+            }
+            for (Flower flower: flowers) {
+                if (bee.isCollided(flower)) {
+                    bee.collide(flower);
+                }
+            }
+        }
+        draw();
     }
 
     public void draw() {
-
+        for (Bee bee: bees) {
+            bee.drawBee();
+        }
+        for (Flower flower: flowers) {
+            flower.draw();
+        }
     }
 }
 
