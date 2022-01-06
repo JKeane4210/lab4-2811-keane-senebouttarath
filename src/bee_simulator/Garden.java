@@ -37,6 +37,8 @@ public class Garden {
         theGarden.getChildren().add(beeImageBox); // place bee on the panel
         displayBee();
         theGarden.setFocusTraversable(true); // ensure garden pane will receive keypresses
+        initializeBees();
+        initializeFlowers();
     }
 
     // display the bee at the (beeXLocation, beeYLocation), ensuring the bee does not leave the garden
@@ -67,6 +69,14 @@ public class Garden {
             beeYLocation -= 10.0;
         }
         displayBee();
+    }
+
+    public void initializeBees() {
+
+    }
+
+    public void initializeFlowers() {
+
     }
 
     public void update() {
