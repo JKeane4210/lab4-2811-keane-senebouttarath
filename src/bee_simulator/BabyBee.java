@@ -8,8 +8,8 @@ public class BabyBee extends Bee {
     private static final int MAX_ENERGY = 10;
     private static final int INIT_ENERGY = 10;
     private static final int MOVE_DISTANCE = 30;
-    private static final String IMG = "";
-    private static final String DESC = "";
+    private static final String IMG = "./Assets/bee-1.jpg";
+    private static final String DESC = "EPIC!";
 
     //---------------- METHODS ----------------\\
 
