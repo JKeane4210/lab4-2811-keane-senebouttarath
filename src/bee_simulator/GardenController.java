@@ -9,6 +9,9 @@ import javafx.scene.layout.Pane;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+/**
+ * TODO: Delete this class before we submit
+ */
 public class GardenController {
 
     private Pane beeImageBox;               // box containing bee and it's label; NOT a good domain name!
