@@ -38,9 +38,9 @@ public class Garden {
             int x = (int)(Math.random() * GARDEN_WIDTH);
             int y = (int)(Math.random() * GARDEN_HEIGHT);
             if (i % 2 == 0) {
-                bees.add(new BabyBee(x, y, 10, 10, 10, "Assets/bee-1.png", "", 0));
+                bees.add(new BabyBee(x, y));
             } else {
-                bees.add(new BigBee(x, y, 15, 10, 10, "Assets/bee-1.png", "", 0));
+                bees.add(new BigBee(x, y));
             }
         }
     }
