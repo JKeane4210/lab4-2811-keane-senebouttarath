@@ -60,7 +60,8 @@ public class GardenController {
             beeXLocation += 10.0;
         } else if (keyEvent.getCode() == KeyCode.LEFT) {
             beeXLocation -= 10.0;
-        } else if (keyEvent.getCode() == KeyCode.DOWN) {
+        }
+        if (keyEvent.getCode() == KeyCode.DOWN) {
             beeYLocation += 10.0;
         } else if (keyEvent.getCode() == KeyCode.UP) {
             beeYLocation -= 10.0;

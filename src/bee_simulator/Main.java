@@ -15,12 +15,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("bee_simulator.fxml"));
-        primaryStage.setTitle("Bee Runner 2049");
+        primaryStage.setTitle("DaBeest Bees Lab");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
-    }
-
-    public Main() {
     }
 
     public static void main(String[] args) {
