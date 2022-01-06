@@ -1,5 +1,6 @@
 package bee_simulator;
 
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -51,12 +52,18 @@ public abstract class Organism {
         energyBar = new Rectangle();
         energyBarText = new Label();
 
-        ImageView organismImage = new ImageView(new Image(imgUrl));
+        ImageView organismImage = new ImageView(new Image("file:" + imgUrl));
+        organismImage.setPreserveRatio(true);
+        organismImage.setFitWidth(collisionRadius * 2);
 
         organismContainer.getChildren().add(energyBackgroundBar);
         organismContainer.getChildren().add(energyBar);
         organismContainer.getChildren().add(energyBarText);
         organismContainer.getChildren().add(organismImage);
+    }
+
+    public void addToGarden(Pane garden) {
+        garden.getChildren().add(organismContainer);
     }
 
     //-------- ABSTRACT METHODS

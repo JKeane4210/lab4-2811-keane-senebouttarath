@@ -1,6 +1,10 @@
 package bee_simulator;
 
 public abstract class Flower extends Organism {
+    public Flower(int centerX, int centerY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String description) {
+        super(centerX, centerY, collisionRadius, maxEnergy, energy, imgUrl, description);
+    }
+
     public void draw() {
         if ( centerX < 0 )
             centerX = 0;
@@ -11,8 +15,8 @@ public abstract class Flower extends Organism {
             centerY = 0;
         else if (Garden.GARDEN_HEIGHT > 0 && centerY > Garden.GARDEN_HEIGHT - 10)
             centerY = Garden.GARDEN_HEIGHT - 10;
-//        beeImageBox.setLayoutX(centerX);
-//        beeImageBox.setLayoutY(centerX);
+        organismContainer.setLayoutX(centerX);
+        organismContainer.setLayoutY(centerY);
     }
 
     public void interactWithBee(Bee bee) {

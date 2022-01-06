@@ -16,20 +16,31 @@ public class Garden {
 
     public static final int GARDEN_WIDTH = 900;
     public static final int GARDEN_HEIGHT = 700;
-    private static final int INITIAL_FLOWER_COUNT = 10;
+    private static final int INITIAL_FLOWER_COUNT = 20;
+    private static final int INITIAL_BEE_COUNT = 20;
 
     private Pane beeImageBox;               // box containing bee and it's label; NOT a good domain name!
     private double beeXLocation, beeYLocation;  // drawn location of bee; this should be in a domain class
     List<Flower> flowers = new ArrayList<>();
+    List<Bee> bees = new ArrayList<>();
 
     public Garden() {
         for (int i = 0; i < INITIAL_FLOWER_COUNT; ++i) {
             int x = (int)(Math.random() * GARDEN_WIDTH);
             int y = (int)(Math.random() * GARDEN_HEIGHT);
             if (i % 2 == 0) {
-                flowers.add(new Rose());
+                flowers.add(new Rose(x, y, 10, 10, 10, ""));
             } else {
-                flowers.add(new Lily());
+                flowers.add(new Lily(x, y, 10, 10, 10, ""));
+            }
+        }
+        for (int i = 0; i < INITIAL_BEE_COUNT; ++i) {
+            int x = (int)(Math.random() * GARDEN_WIDTH);
+            int y = (int)(Math.random() * GARDEN_HEIGHT);
+            if (i % 2 == 0) {
+                bees.add(new BabyBee(x, y, 10, 10, 10, "Assets/bee-1.png", "", 0));
+            } else {
+                bees.add(new BigBee(x, y, 15, 10, 10, "Assets/bee-1.png", "", 0));
             }
         }
     }
@@ -98,11 +109,17 @@ public class Garden {
     }
 
     public void initializeBees() {
-
+        for (Bee bee: bees) {
+            bee.addToGarden(theGarden);
+            bee.drawBee();
+        }
     }
 
     public void initializeFlowers() {
-
+        for (Flower flower: flowers) {
+            flower.addToGarden(theGarden);
+            flower.draw();
+        }
     }
 
     public void update() {
