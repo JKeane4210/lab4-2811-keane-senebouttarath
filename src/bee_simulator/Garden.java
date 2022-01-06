@@ -9,21 +9,47 @@ import javafx.scene.layout.Pane;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Garden {
+
+    public static final int GARDEN_WIDTH = 900;
+    public static final int GARDEN_HEIGHT = 700;
+    private static final int INITIAL_FLOWER_COUNT = 10;
 
     private Pane beeImageBox;               // box containing bee and it's label; NOT a good domain name!
     private double beeXLocation, beeYLocation;  // drawn location of bee; this should be in a domain class
+    List<Flower> flowers = new ArrayList<>();
+
+    public Garden() {
+        for (int i = 0; i < INITIAL_FLOWER_COUNT; ++i) {
+            int x = (int)(Math.random() * GARDEN_WIDTH);
+            int y = (int)(Math.random() * GARDEN_HEIGHT);
+            if (i % 2 == 0) {
+                flowers.add(new Rose());
+            } else {
+                flowers.add(new Lily());
+            }
+        }
+    }
 
     @FXML
     private Pane theGarden;                 // capture the pane we are drawing on from JavaFX
 
     @FXML
     public void initialize() {              // executed after scene is loaded but before any methods
+        theGarden.setPrefWidth(GARDEN_WIDTH);
+        theGarden.setPrefHeight(GARDEN_HEIGHT);
+        theGarden.setMaxWidth(GARDEN_WIDTH);
+        theGarden.setMaxHeight(GARDEN_HEIGHT);
+        theGarden.setMinWidth(GARDEN_WIDTH);
+        theGarden.setMinHeight(GARDEN_HEIGHT);
         // for fun, set up a gradient background; could probably do in SceneBuilder as well
         // note the label has a Z index of 2 so it is drawn above the panel, otherwise it may be displayed "under" the panel and not be visible
         theGarden.setStyle("-fx-background-color: linear-gradient(to bottom right, derive(forestgreen, 20%), derive(forestgreen, -40%));");
         // load image from a file; the file needs to be in the top folder of the project
-        ImageView beeImage = new ImageView(new Image("file:bee-1.jpg")); // draws bee
+        ImageView beeImage = new ImageView(new Image("file:Assets/bee-1.jpg")); // draws bee
         beeImage.setPreserveRatio(true);    // ensure ratio preserved when scaling the bee
         beeImage.setFitWidth(50.0);         // scale bee to be a reasonable size
         Label beeLabel = new Label();       // you might make this an attribute of another class so you can update it
