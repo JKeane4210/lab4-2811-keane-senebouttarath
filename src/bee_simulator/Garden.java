@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Garden {
-
     public static final int GARDEN_WIDTH = 900;
     public static final int GARDEN_HEIGHT = 700;
     private static final int INITIAL_FLOWER_COUNT = 20;
@@ -23,6 +22,10 @@ public class Garden {
     private double beeXLocation, beeYLocation;  // drawn location of bee; this should be in a domain class
     List<Flower> flowers = new ArrayList<>();
     List<Bee> bees = new ArrayList<>();
+
+    @FXML
+    private Pane theGarden;                 // capture the pane we are drawing on from JavaFX
+
 
     public Garden() {
         for (int i = 0; i < INITIAL_FLOWER_COUNT; ++i) {
@@ -44,9 +47,6 @@ public class Garden {
             }
         }
     }
-
-    @FXML
-    private Pane theGarden;                 // capture the pane we are drawing on from JavaFX
 
     @FXML
     public void initialize() {              // executed after scene is loaded but before any methods
