@@ -26,6 +26,8 @@ public class GardenController {
         // note the label has a Z index of 2 so it is drawn above the panel, otherwise it may be displayed "under" the panel and not be visible
         theGarden.setStyle("-fx-background-color: linear-gradient(to bottom right, derive(forestgreen, 20%), derive(forestgreen, -40%));");
         // load image from a file; the file needs to be in the top folder of the project
+
+        /*
         ImageView beeImage = new ImageView(new Image("file:bee-1.jpg")); // draws bee
         beeImage.setPreserveRatio(true);    // ensure ratio preserved when scaling the bee
         beeImage.setFitWidth(50.0);         // scale bee to be a reasonable size
@@ -39,6 +41,8 @@ public class GardenController {
         beeYLocation = 200;                 //     capture this in an object
         theGarden.getChildren().add(beeImageBox); // place bee on the panel
         displayBee();
+         */
+
         theGarden.setFocusTraversable(true); // ensure garden pane will receive keypresses
     }
 

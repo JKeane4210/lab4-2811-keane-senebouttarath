@@ -62,6 +62,8 @@ public class Garden {
         // note the label has a Z index of 2 so it is drawn above the panel, otherwise it may be displayed "under" the panel and not be visible
         theGarden.setStyle("-fx-background-color: linear-gradient(to bottom right, derive(forestgreen, 20%), derive(forestgreen, -40%));");
         // load image from a file; the file needs to be in the top folder of the project
+
+        /*
         ImageView beeImage = new ImageView(new Image("file:Assets/bee-1.jpg")); // draws bee
         beeImage.setPreserveRatio(true);    // ensure ratio preserved when scaling the bee
         beeImage.setFitWidth(50.0);         // scale bee to be a reasonable size
@@ -75,6 +77,8 @@ public class Garden {
         beeYLocation = 200;                 //     capture this in an object
         theGarden.getChildren().add(beeImageBox); // place bee on the panel
         displayBee();
+         */
+
         theGarden.setFocusTraversable(true); // ensure garden pane will receive keypresses
         initializeBees();
         initializeFlowers();
@@ -82,6 +86,7 @@ public class Garden {
 
     // display the bee at the (beeXLocation, beeYLocation), ensuring the bee does not leave the garden
     private void displayBee() {
+        /*
         if ( beeXLocation < 0 )
             beeXLocation = 0;
         else if (theGarden.getWidth() > 0 && beeXLocation > theGarden.getWidth() - 10)
@@ -93,10 +98,13 @@ public class Garden {
             beeYLocation = theGarden.getHeight() - 10;
         beeImageBox.setLayoutX(beeXLocation);
         beeImageBox.setLayoutY(beeYLocation);
+
+         */
     }
 
     @FXML
     public void onKeyPressed(KeyEvent keyEvent) {
+        /*
         if (keyEvent.getCode() == KeyCode.RIGHT) {
             beeXLocation += 10.0;
         } else if (keyEvent.getCode() == KeyCode.LEFT) {
@@ -108,12 +116,14 @@ public class Garden {
             beeYLocation -= 10.0;
         }
         displayBee();
+
+         */
     }
 
     public void initializeBees() {
         for (Bee bee: bees) {
             bee.addToGarden(theGarden);
-            bee.drawBee();
+            bee.draw();
         }
     }
 
@@ -144,7 +154,7 @@ public class Garden {
 
     public void draw() {
         for (Bee bee: bees) {
-            bee.drawBee();
+            bee.draw();
         }
         for (Flower flower: flowers) {
             flower.draw();

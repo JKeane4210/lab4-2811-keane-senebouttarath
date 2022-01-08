@@ -21,7 +21,11 @@ public abstract class Bee extends Organism {
 
     }
 
-    public abstract void drawBee();
+    public abstract void draw();
+
+    public void update() {
+
+    }
 
     public void die() {
 

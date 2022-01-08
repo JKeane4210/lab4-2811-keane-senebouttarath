@@ -70,6 +70,10 @@ public abstract class Organism {
 
     public abstract void collide(Organism otherOrganism);
 
+    public abstract void update();
+
+    public abstract void draw();
+
     //-------- CONCRETE METHODS
 
     public int getCenterX() {
