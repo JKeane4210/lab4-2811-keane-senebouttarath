@@ -6,6 +6,10 @@ public abstract class Flower extends Organism {
     }
 
     public void draw() {
+        super.draw();
+        //I commented this out for now so the flowers would draw in the center
+        //Some boundary check stuff like this should be implemented in the organism class!
+        /*
         if ( centerX < 0 )
             centerX = 0;
         else if (Garden.GARDEN_WIDTH > 0 && centerX > Garden.GARDEN_WIDTH - 10)
@@ -17,6 +21,12 @@ public abstract class Flower extends Organism {
             centerY = Garden.GARDEN_HEIGHT - 10;
         organismContainer.setLayoutX(centerX);
         organismContainer.setLayoutY(centerY);
+
+         */
+    }
+
+    public void update() {
+
     }
 
     @Override

@@ -6,7 +6,7 @@ public class BabyBee extends Bee {
 
     private static final int COLLISION_RADIUS = 10;
     private static final int MAX_ENERGY = 10;
-    private static final int INIT_ENERGY = 10;
+    private static final int INIT_ENERGY = 8;
     private static final int MOVE_DISTANCE = 30;
     private static final String IMG = "./Assets/bee.png";
     private static final String DESC = "EPIC!";
@@ -18,15 +18,22 @@ public class BabyBee extends Bee {
     }
 
     public void draw() {
-        organismContainer.setLayoutX(centerX + COLLISION_RADIUS);
-        organismContainer.setLayoutY(centerY + COLLISION_RADIUS);
+        super.draw();
+    }
+
+    public void update() {
+        super.update();
+
+        if (energy >= maxEnergy) {
+            growUp();
+        }
     }
 
     public void collide(Organism otherOrganism) {
-
+        super.collide(otherOrganism);
     }
 
     public void growUp() {
-
+        //TODO: Make the baby bee grow up (it needs to delete itself and create a new big bee in the garden)
     }
 }

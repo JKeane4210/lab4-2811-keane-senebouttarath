@@ -1,17 +1,19 @@
 package bee_simulator;
 
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public abstract class Organism {
 
     //-------- CONSTANTS --------\\
 
-    private static final int ENERGY_BAR_HEIGHT = 10;
+    protected static final int ENERGY_BAR_HEIGHT = 10;
 
     //-------- ATTRIBUTES --------\\
 
@@ -25,10 +27,10 @@ public abstract class Organism {
 
     protected String description;
 
-    protected VBox organismContainer;
+    protected Pane organismContainer;
     private Rectangle energyBackgroundBar;
     private Rectangle energyBar;
-    private Label energyBarText;
+    private Text energyBarText;
 
     //---------------- METHODS ----------------\\
 
@@ -46,20 +48,25 @@ public abstract class Organism {
         this.energy = energy;
         this.description = description;
 
-        organismContainer = new VBox();
+        organismContainer = new Pane();
+        organismContainer.setMaxWidth(collisionRadius * 2);
+        organismContainer.setMaxHeight(collisionRadius * 2 + ENERGY_BAR_HEIGHT);
 
-        energyBackgroundBar = new Rectangle();
-        energyBar = new Rectangle();
-        energyBarText = new Label();
+        energyBackgroundBar = new Rectangle(collisionRadius * 2, ENERGY_BAR_HEIGHT, Color.GRAY);
+        energyBackgroundBar.setX(0);
+        energyBackgroundBar.setY(0);
+        energyBar = new Rectangle(collisionRadius * 2, ENERGY_BAR_HEIGHT, Color.LIGHTYELLOW);
+        energyBar.setX(0);
+        energyBar.setY(0);
+
+        drawEnergy();
 
         ImageView organismImage = new ImageView(new Image("file:" + imgUrl));
         organismImage.setPreserveRatio(true);
         organismImage.setFitWidth(collisionRadius * 2);
+        organismImage.setY(ENERGY_BAR_HEIGHT);
 
-        organismContainer.getChildren().add(energyBackgroundBar);
-        organismContainer.getChildren().add(energyBar);
-        organismContainer.getChildren().add(energyBarText);
-        organismContainer.getChildren().add(organismImage);
+        organismContainer.getChildren().addAll(energyBackgroundBar, energyBar, organismImage);
     }
 
     public void addToGarden(Pane garden) {
@@ -72,9 +79,28 @@ public abstract class Organism {
 
     public abstract void update();
 
-    public abstract void draw();
+    //-------- DRAWING METHODS
+
+    public void draw() {
+        organismContainer.setLayoutX(centerX - collisionRadius);
+        organismContainer.setLayoutY(centerY - collisionRadius - (ENERGY_BAR_HEIGHT));
+        organismContainer.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
+        drawEnergy();
+    }
+
+    public void drawEnergy() {
+        energyBackgroundBar.setWidth(collisionRadius * 2);
+        energyBackgroundBar.toBack();
+        energyBar.setWidth((int) (collisionRadius * 2 * (energy / (double) maxEnergy)));
+        energyBar.toFront();
+    }
+
 
     //-------- CONCRETE METHODS
+
+    public boolean isAlive() {
+        return energy > 0;
+    }
 
     public int getCenterX() {
         return centerX;
@@ -109,26 +135,6 @@ public abstract class Organism {
         int maxRadius = this.getCollisionRadius() + otherOrganism.getCollisionRadius();
         double distanceBetweenOrganisms = euclideanDistance(this.getCenterX(), this.getCenterY(), otherOrganism.getCenterX(), otherOrganism.getCenterY());
         return distanceBetweenOrganisms <= maxRadius;
-    }
-
-    public void drawHealthBar() {
-        int barPosX = this.getCenterX() - this.getCollisionRadius();
-        int barPosY = this.getCenterY() - this.getCollisionRadius() - ENERGY_BAR_HEIGHT;
-        int width = this.getCollisionRadius() * 2;
-
-        energyBackgroundBar.setHeight(ENERGY_BAR_HEIGHT);
-        energyBackgroundBar.setWidth(width);
-        energyBackgroundBar.setX(barPosX);
-        energyBackgroundBar.setY(barPosY);
-
-        energyBar.setHeight(ENERGY_BAR_HEIGHT);
-        energyBar.setWidth(energy / maxEnergy);
-        energyBar.setX(barPosX);
-        energyBar.setY(barPosY);
-
-        energyBarText.setText(formattedEnergyText());
-        energyBarText.setMaxHeight(ENERGY_BAR_HEIGHT);
-        energyBarText.setMaxWidth(width);
     }
 
     public void increaseEnergy(int energy) {

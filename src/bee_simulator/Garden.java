@@ -8,6 +8,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,8 +81,9 @@ public class Garden {
          */
 
         theGarden.setFocusTraversable(true); // ensure garden pane will receive keypresses
-        initializeBees();
+
         initializeFlowers();
+        initializeBees();
     }
 
     // display the bee at the (beeXLocation, beeYLocation), ensuring the bee does not leave the garden
@@ -104,25 +106,16 @@ public class Garden {
 
     @FXML
     public void onKeyPressed(KeyEvent keyEvent) {
-        /*
-        if (keyEvent.getCode() == KeyCode.RIGHT) {
-            beeXLocation += 10.0;
-        } else if (keyEvent.getCode() == KeyCode.LEFT) {
-            beeXLocation -= 10.0;
-        }
-        if (keyEvent.getCode() == KeyCode.DOWN) {
-            beeYLocation += 10.0;
-        } else if (keyEvent.getCode() == KeyCode.UP) {
-            beeYLocation -= 10.0;
-        }
-        displayBee();
-
-         */
+        update();
     }
 
     public void initializeBees() {
         for (Bee bee: bees) {
             bee.addToGarden(theGarden);
+
+            bee.visitFlower(flowers.get((int) Math.floor(Math.random() * flowers.size())));
+
+            bee.update();
             bee.draw();
         }
     }
@@ -130,25 +123,40 @@ public class Garden {
     public void initializeFlowers() {
         for (Flower flower: flowers) {
             flower.addToGarden(theGarden);
+            flower.update();
             flower.draw();
         }
     }
 
     public void update() {
         for (Bee bee: bees) {
-            for (Bee otherBee: bees) {
-                if (bee != otherBee) {
-                    if (bee.isCollided(otherBee)) {
-                        bee.collide(otherBee);
+            bee.update();
+
+            if (!bee.isAlive()) {
+                //Somehow remove bee from garden
+            } else {
+                for (Bee otherBee: bees) {
+                    if (bee != otherBee) {
+                        if (bee.isCollided(otherBee)) {
+                            bee.collide(otherBee);
+                        }
+                    }
+                }
+                for (Flower flower: flowers) {
+                    if (bee.isCollided(flower)) {
+                        bee.collide(flower);
+
+                        //TODO: Select a new random flower!
                     }
                 }
             }
-            for (Flower flower: flowers) {
-                if (bee.isCollided(flower)) {
-                    bee.collide(flower);
-                }
-            }
         }
+
+        for (Flower flower: flowers) {
+            flower.update();
+        }
+
+
         draw();
     }
 

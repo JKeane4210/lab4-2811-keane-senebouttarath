@@ -19,13 +19,7 @@
    <children>
       <HBox>
          <Pane id="theGarden" fx:id="theGarden" prefHeight="700.0" prefWidth="700.0">
-            <children>
-               <Label layoutX="50.0" layoutY="550.0" scaleZ="2.0" text="Press arrow keys to move bee" textFill="darkred" translateZ="1.0">
-                  <font>
-                     <Font name="Poor Richard" size="18.0" />
-                  </font>
-               </Label>
-            </children>
+
          </Pane>
          <VBox id="natureBookPane" fx:id="natureBookPane" prefHeight="700.0" prefWidth="200.0" alignment="TOP_CENTER">
             <children>

@@ -5,8 +5,8 @@ public abstract class Bee extends Organism {
     //---------------- ATTRIBUTES ----------------\\
 
     protected int moveDistance;
-    protected int targetX;
-    protected int targetY;
+    protected int targetX = 0;
+    protected int targetY = 0;
 
     //---------------- METHODS ----------------\\
 
@@ -19,12 +19,30 @@ public abstract class Bee extends Organism {
 
     public void move() {
 
+        int xOffset = targetX - centerX;
+        int yOffset = targetY - centerY;
+
+        double denom = Math.abs(xOffset) + Math.abs(yOffset);
+
+        int xMoveDist = (int) ((xOffset / denom) * moveDistance);
+        int yMoveDist = (int) ((yOffset / denom) * moveDistance);
+
+        centerX+=xMoveDist;
+        centerY+=yMoveDist;
     }
 
-    public abstract void draw();
+    public void draw() {
+        super.draw();
+    }
 
     public void update() {
+        decreaseEnergy(1);
 
+        if (energy > 0) {
+            move();
+        } else {
+            die();
+        }
     }
 
     public void die() {
@@ -32,8 +50,13 @@ public abstract class Bee extends Organism {
     }
 
     public void visitFlower(Flower flower) {
-
+        targetX = flower.getCenterX();
+        targetY = flower.getCenterY();
     }
 
-    public abstract void collide(Organism otherOrganism);
+    public void collide(Organism otherOrganism) {
+        if (otherOrganism instanceof Flower) {
+            increaseEnergy(10);
+        }
+    };
 }
