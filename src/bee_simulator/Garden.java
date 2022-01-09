@@ -16,7 +16,7 @@ import java.util.List;
 public class Garden {
     public static final int GARDEN_WIDTH = 700;
     public static final int GARDEN_HEIGHT = 700;
-    private static final int INITIAL_FLOWER_COUNT = 10;
+    private static final int INITIAL_FLOWER_COUNT = 20;
     private static final int INITIAL_BEE_COUNT = 10;
 
     private Pane beeImageBox;               // box containing bee and it's label; NOT a good domain name!

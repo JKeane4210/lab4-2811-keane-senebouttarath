@@ -22,6 +22,9 @@
 
          </Pane>
          <VBox id="natureBookPane" fx:id="natureBookVBox" prefHeight="700.0" prefWidth="200.0" alignment="TOP_CENTER" spacing="25">
+            <style>
+               -fx-background-color: white
+            </style>
             <children>
                <Label layoutX="50.0" layoutY="550.0" scaleZ="2.0" text="Nature Book" textFill="black" translateZ="1.0" alignment="TOP_CENTER">
                   <font>
