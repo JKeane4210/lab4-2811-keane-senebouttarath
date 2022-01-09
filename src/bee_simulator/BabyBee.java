@@ -5,8 +5,8 @@ public class BabyBee extends Bee {
     //---------------- CONSTANTS ----------------\\
 
     private static final int COLLISION_RADIUS = 10;
-    private static final int MAX_ENERGY = 10;
-    private static final int INIT_ENERGY = 8;
+    private static final int MAX_ENERGY = 200;
+    private static final int INIT_ENERGY = 130;
     private static final int MOVE_DISTANCE = 30;
     private static final String IMG = "./Assets/bee.png";
     private static final String DESC = "EPIC!";

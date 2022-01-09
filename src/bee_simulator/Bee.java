@@ -7,6 +7,7 @@ public abstract class Bee extends Organism {
     protected int moveDistance;
     protected int targetX = 0;
     protected int targetY = 0;
+    protected BeeMovementPattern movementPattern;
 
     //---------------- METHODS ----------------\\
 
@@ -18,17 +19,7 @@ public abstract class Bee extends Organism {
     }
 
     public void move() {
-
-        int xOffset = targetX - centerX;
-        int yOffset = targetY - centerY;
-
-        double denom = Math.abs(xOffset) + Math.abs(yOffset);
-
-        int xMoveDist = (int) ((xOffset / denom) * moveDistance);
-        int yMoveDist = (int) ((yOffset / denom) * moveDistance);
-
-        centerX+=xMoveDist;
-        centerY+=yMoveDist;
+        movementPattern.moveBee();
     }
 
     public void draw() {
@@ -43,20 +34,31 @@ public abstract class Bee extends Organism {
         } else {
             die();
         }
+        if (movementPattern.targetAchieved()) {
+            movementPattern.retarget();
+        }
     }
 
     public void die() {
 
     }
 
-    public void visitFlower(Flower flower) {
-        targetX = flower.getCenterX();
-        targetY = flower.getCenterY();
+    public void setTarget() {
+        movementPattern.retarget();
     }
+
+//    public void visitFlower(Flower flower) {
+//        targetX = flower.getCenterX();
+//        targetY = flower.getCenterY();
+//    }
 
     public void collide(Organism otherOrganism) {
         if (otherOrganism instanceof Flower) {
-            increaseEnergy(10);
+            ((Flower)otherOrganism).interactWithBee(this);
         }
-    };
+    }
+
+   public void setMovementPattern(BeeMovementPattern movementPattern) {
+        this.movementPattern = movementPattern;
+   }
 }

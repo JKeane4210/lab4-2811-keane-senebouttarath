@@ -16,8 +16,8 @@ import java.util.List;
 public class Garden {
     public static final int GARDEN_WIDTH = 700;
     public static final int GARDEN_HEIGHT = 700;
-    private static final int INITIAL_FLOWER_COUNT = 20;
-    private static final int INITIAL_BEE_COUNT = 20;
+    private static final int INITIAL_FLOWER_COUNT = 10;
+    private static final int INITIAL_BEE_COUNT = 10;
 
     private Pane beeImageBox;               // box containing bee and it's label; NOT a good domain name!
     private double beeXLocation, beeYLocation;  // drawn location of bee; this should be in a domain class
@@ -42,11 +42,13 @@ public class Garden {
         for (int i = 0; i < INITIAL_BEE_COUNT; ++i) {
             int x = (int)(Math.random() * GARDEN_WIDTH);
             int y = (int)(Math.random() * GARDEN_HEIGHT);
-            if (i % 2 == 0) {
-                bees.add(new BabyBee(x, y));
-            } else {
-                bees.add(new BigBee(x, y));
-            }
+            int movementType = (int)(Math.random() * 2);
+            Bee newBee = i % 2 == 0 ? new BabyBee(x, y) : new BigBee(x, y);
+            BeeMovementPattern movementPattern = movementType % 2 == 0 ?
+                                                    new FlowerOrientedMovement(newBee, this) :
+                                                    new RandomLineMovement(newBee);
+            newBee.setMovementPattern(movementPattern);
+            bees.add(newBee);
         }
     }
 
@@ -112,9 +114,7 @@ public class Garden {
     public void initializeBees() {
         for (Bee bee: bees) {
             bee.addToGarden(theGarden);
-
-            bee.visitFlower(flowers.get((int) Math.floor(Math.random() * flowers.size())));
-
+            bee.setTarget();
             bee.update();
             bee.draw();
         }
@@ -167,6 +167,10 @@ public class Garden {
         for (Flower flower: flowers) {
             flower.draw();
         }
+    }
+
+    public List<Flower> getFlowers() {
+        return flowers;
     }
 }
 

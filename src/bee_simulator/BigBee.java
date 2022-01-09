@@ -5,8 +5,8 @@ public class BigBee extends Bee {
     //---------------- CONSTANTS ----------------\\
 
     private static final int COLLISION_RADIUS = 20;
-    private static final int MAX_ENERGY = 20;
-    private static final int INIT_ENERGY = 20;
+    private static final int MAX_ENERGY = 300;
+    private static final int INIT_ENERGY = 200;
     private static final int MOVE_DISTANCE = 10;
     private static final String IMG = "./Assets/bee.png";
     private static final String DESC = "BIG BOY";
@@ -18,7 +18,6 @@ public class BigBee extends Bee {
 
     public BigBee(int startX, int startY) {
         super(startX, startY, COLLISION_RADIUS, MAX_ENERGY, INIT_ENERGY, IMG, DESC, MOVE_DISTANCE);
-
     }
 
     public void draw() {

@@ -170,7 +170,7 @@ public abstract class Organism {
         this.description = description;
     }
 
-    private double euclideanDistance(int x1, int y1, int x2, int y2) {
+    public double euclideanDistance(int x1, int y1, int x2, int y2) {
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
