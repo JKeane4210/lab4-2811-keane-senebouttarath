@@ -41,6 +41,10 @@ public abstract class Organism {
     }
 
     public Organism(int centerX, int centerY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String description) {
+        this(centerX, centerY, collisionRadius, maxEnergy, energy, imgUrl, description, true);
+    }
+
+    public Organism(int centerX, int centerY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String description, boolean shouldDrawEnergy) {
         this.centerX = centerX;
         this.centerY = centerY;
         this.collisionRadius = collisionRadius;
@@ -52,21 +56,23 @@ public abstract class Organism {
         organismContainer.setMaxWidth(collisionRadius * 2);
         organismContainer.setMaxHeight(collisionRadius * 2 + ENERGY_BAR_HEIGHT);
 
-        energyBackgroundBar = new Rectangle(collisionRadius * 2, ENERGY_BAR_HEIGHT, Color.GRAY);
-        energyBackgroundBar.setX(0);
-        energyBackgroundBar.setY(0);
-        energyBar = new Rectangle(collisionRadius * 2, ENERGY_BAR_HEIGHT, Color.LIGHTYELLOW);
-        energyBar.setX(0);
-        energyBar.setY(0);
-
-        drawEnergy();
+        if (shouldDrawEnergy) {
+            energyBackgroundBar = new Rectangle(collisionRadius * 2, ENERGY_BAR_HEIGHT, Color.GRAY);
+            energyBackgroundBar.setX(0);
+            energyBackgroundBar.setY(0);
+            energyBar = new Rectangle(collisionRadius * 2, ENERGY_BAR_HEIGHT, Color.LIGHTYELLOW);
+            energyBar.setX(0);
+            energyBar.setY(0);
+            drawEnergy();
+            organismContainer.getChildren().addAll(energyBackgroundBar, energyBar);
+        }
 
         ImageView organismImage = new ImageView(new Image("file:" + imgUrl));
         organismImage.setPreserveRatio(true);
         organismImage.setFitWidth(collisionRadius * 2);
         organismImage.setY(ENERGY_BAR_HEIGHT);
 
-        organismContainer.getChildren().addAll(energyBackgroundBar, energyBar, organismImage);
+        organismContainer.getChildren().addAll(organismImage);
     }
 
     public void addToGarden(Pane garden) {
@@ -176,5 +182,9 @@ public abstract class Organism {
 
     private String formattedEnergyText() {
         return this.getEnergy() + " / " + this.getMaxEnergy();
+    }
+
+    public Pane getOrganismContainer() {
+        return organismContainer;
     }
 }   //end class Organism

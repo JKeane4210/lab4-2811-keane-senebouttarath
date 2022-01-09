@@ -1,8 +1,13 @@
 package bee_simulator;
 
 public abstract class Flower extends Organism {
+    
+    public Flower(int centerX, int centerY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String description, boolean shouldDrawEnergy) {
+        super(centerX, centerY, collisionRadius, maxEnergy, energy, imgUrl, description, shouldDrawEnergy);
+    }
+
     public Flower(int centerX, int centerY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String description) {
-        super(centerX, centerY, collisionRadius, maxEnergy, energy, imgUrl, description);
+        this(centerX, centerY, collisionRadius, maxEnergy, energy, imgUrl, description, true);
     }
 
     public void draw() {

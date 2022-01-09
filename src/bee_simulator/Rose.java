@@ -6,9 +6,14 @@ public class Rose extends Flower {
     private static final int ROSE_COLLISION_RADIUS = 15;
     private static final int BEE_HEALTH_LOSS = 30;
     private static final int ROSE_HEALTH_LOSS = 5;
+    private static final String ROSE_DESCRIPTION = "Thorny flower. Damages bees that visit it.";
+
+    public Rose(int centerX, int centerY, boolean shouldDrawEnergy) {
+        super(centerX, centerY, ROSE_COLLISION_RADIUS, ROSE_MAX_HEALTH, ROSE_INITIAL_HEALTH, "Assets/rose.png", ROSE_DESCRIPTION, shouldDrawEnergy);
+    }
 
     public Rose(int centerX, int centerY) {
-        super(centerX, centerY, ROSE_COLLISION_RADIUS, ROSE_MAX_HEALTH, ROSE_INITIAL_HEALTH, "Assets/rose.png", "DESCRIPTION");
+        this(centerX, centerY, true);
     }
 
     @Override

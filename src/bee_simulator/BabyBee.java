@@ -9,12 +9,16 @@ public class BabyBee extends Bee {
     private static final int INIT_ENERGY = 130;
     private static final int MOVE_DISTANCE = 30;
     private static final String IMG = "./Assets/bee.png";
-    private static final String DESC = "EPIC!";
+    private static final String DESC = "A bee with a small amount of fast, but is very fast. If it reaches full health, it becomes a big bee.";
 
     //---------------- METHODS ----------------\\
 
     public BabyBee(int startX, int startY) {
         super(startX, startY, COLLISION_RADIUS, MAX_ENERGY, INIT_ENERGY, IMG, DESC, MOVE_DISTANCE);
+    }
+
+    public BabyBee(int startX, int startY, boolean shouldDrawEnergy) {
+        super(startX, startY, COLLISION_RADIUS, MAX_ENERGY, INIT_ENERGY, IMG, DESC, MOVE_DISTANCE, shouldDrawEnergy);
     }
 
     public void draw() {

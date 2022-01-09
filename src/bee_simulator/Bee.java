@@ -13,9 +13,13 @@ public abstract class Bee extends Organism {
 
     //-------- CONSTRUCTORS
 
-    public Bee(int startX, int startY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String desc, int moveDistance) {
-        super(startX, startY, collisionRadius, maxEnergy, energy, imgUrl, desc);
+    public Bee(int startX, int startY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String desc, int moveDistance, boolean shouldDrawEnergy) {
+        super(startX, startY, collisionRadius, maxEnergy, energy, imgUrl, desc, shouldDrawEnergy);
         this.moveDistance = moveDistance;
+    }
+
+    public Bee(int startX, int startY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String desc, int moveDistance) {
+        this(startX, startY, collisionRadius, maxEnergy, energy, imgUrl, desc, moveDistance, true);
     }
 
     public void move() {
@@ -60,5 +64,9 @@ public abstract class Bee extends Organism {
 
    public void setMovementPattern(BeeMovementPattern movementPattern) {
         this.movementPattern = movementPattern;
+   }
+
+   public int getMoveDistance() {
+        return moveDistance;
    }
 }

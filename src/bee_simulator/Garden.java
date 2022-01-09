@@ -23,11 +23,12 @@ public class Garden {
     private double beeXLocation, beeYLocation;  // drawn location of bee; this should be in a domain class
     List<Flower> flowers = new ArrayList<>();
     List<Bee> bees = new ArrayList<>();
+    private NatureBook natureBook;
 
     @FXML
     private Pane theGarden;                 // capture the pane we are drawing on from JavaFX
     @FXML
-    private Pane natureBookPane;
+    private VBox natureBookVBox;
 
     public Garden() {
         for (int i = 0; i < INITIAL_FLOWER_COUNT; ++i) {
@@ -86,6 +87,8 @@ public class Garden {
 
         initializeFlowers();
         initializeBees();
+        natureBook = new NatureBook(natureBookVBox);
+        natureBook.draw();
     }
 
     // display the bee at the (beeXLocation, beeYLocation), ensuring the bee does not leave the garden
