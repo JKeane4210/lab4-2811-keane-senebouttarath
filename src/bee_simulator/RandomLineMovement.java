@@ -12,7 +12,7 @@ public class RandomLineMovement extends BeeMovementPattern {
 
     @Override
     public void retarget() {
-        bee.targetX = (int)(Math.random() * Garden.GARDEN_WIDTH);
-        bee.targetY = (int)(Math.random() * Garden.GARDEN_HEIGHT);
+        bee.targetX = (int)(Math.random() * (Garden.GARDEN_WIDTH));
+        bee.targetY = (int)(Math.random() * (Garden.GARDEN_HEIGHT));
     }
 }

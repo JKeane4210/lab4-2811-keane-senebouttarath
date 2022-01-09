@@ -88,8 +88,8 @@ public abstract class Organism {
     //-------- DRAWING METHODS
 
     public void draw() {
-        organismContainer.setLayoutX(centerX - collisionRadius);
-        organismContainer.setLayoutY(centerY - collisionRadius - (ENERGY_BAR_HEIGHT));
+        organismContainer.setLayoutX(Garden.GARDEN_X_PADDING + centerX - collisionRadius);
+        organismContainer.setLayoutY(Garden.GARDEN_Y_PADDING + centerY - collisionRadius - (ENERGY_BAR_HEIGHT));
         organismContainer.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
         drawEnergy();
     }

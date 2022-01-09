@@ -16,8 +16,8 @@ public abstract class BeeMovementPattern {
         int xMoveDist = (int) ((xOffset / denom) * bee.moveDistance);
         int yMoveDist = (int) ((yOffset / denom) * bee.moveDistance);
 
-        bee.centerX+=xMoveDist;
-        bee.centerY+=yMoveDist;
+        bee.centerX += xMoveDist;
+        bee.centerY += yMoveDist;
     }
 
     public abstract boolean targetAchieved();

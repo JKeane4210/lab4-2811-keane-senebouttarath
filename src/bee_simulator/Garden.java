@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Garden {
-    public static final int GARDEN_WIDTH = 700;
-    public static final int GARDEN_HEIGHT = 700;
+    public static final int GARDEN_WIDTH = 600;
+    public static final int GARDEN_HEIGHT = 600;
+    public static final int GARDEN_X_PADDING = 50;
+    public static final int GARDEN_Y_PADDING = 50;
     private static final int INITIAL_FLOWER_COUNT = 20;
     private static final int INITIAL_BEE_COUNT = 10;
 
@@ -132,44 +134,19 @@ public class Garden {
     }
 
     public void update() {
-        for (Bee bee: bees) {
-            bee.update();
-
-            if (!bee.isAlive()) {
-                //Somehow remove bee from garden
-            } else {
-                for (Bee otherBee: bees) {
-                    if (bee != otherBee) {
-                        if (bee.isCollided(otherBee)) {
-                            bee.collide(otherBee);
-                        }
-                    }
-                }
-                for (Flower flower: flowers) {
-                    if (bee.isCollided(flower)) {
-                        bee.collide(flower);
-
-                        //TODO: Select a new random flower!
-                    }
-                }
-            }
-        }
-
-        for (Flower flower: flowers) {
-            flower.update();
-        }
-
-
+        bees.forEach(Bee::update);
+//        bees.stream().filter(bee::isAlive).forEach(bee -> {
+//            bees.stream().filter(otherBee -> bee != otherBee).filter(bee::isCollided).forEach(bee::collide);
+//        });
+        bees.stream().filter(Bee::isAlive).forEach(bee ->
+                flowers.stream().filter(bee::isCollided).forEach(bee::collide));
+        flowers.forEach(Flower::update);
         draw();
     }
 
     public void draw() {
-        for (Bee bee: bees) {
-            bee.draw();
-        }
-        for (Flower flower: flowers) {
-            flower.draw();
-        }
+        bees.forEach(Bee::draw);
+        flowers.forEach(Flower::draw);
     }
 
     public List<Flower> getFlowers() {
