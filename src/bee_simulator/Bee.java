@@ -65,8 +65,6 @@ public abstract class Bee extends Organism {
         adj.setSaturation(-1.0);
         adj.setBrightness(-0.5);
         organismImage.setEffect(adj);
-//        organismImage.setCache(true);
-//        organismImage.setCacheHint(CacheHint.SPEED);
     }
 
     public void setTarget() {
