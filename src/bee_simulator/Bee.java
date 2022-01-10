@@ -1,8 +1,6 @@
 package bee_simulator;
 
-import javafx.scene.CacheHint;
 import javafx.scene.effect.ColorAdjust;
-import javafx.scene.effect.Effect;
 
 public abstract class Bee extends Organism {
     private static final int BEE_HEALTH_LOSS = 5;
