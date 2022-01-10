@@ -29,17 +29,13 @@ public abstract class Organism {
 
     protected Pane organismContainer;
     protected ImageView organismImage;
-    private Rectangle energyBackgroundBar;
-    private Rectangle energyBar;
+    protected Rectangle energyBackgroundBar;
+    protected Rectangle energyBar;
     private Text energyBarText;
 
     //---------------- METHODS ----------------\\
 
     //-------- CONSTRUCTORS
-
-    public Organism() {
-        this(0, 0, 10, 10, 10, "", "");
-    }
 
     public Organism(int centerX, int centerY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String description) {
         this(centerX, centerY, collisionRadius, maxEnergy, energy, imgUrl, description, true);
@@ -92,7 +88,7 @@ public abstract class Organism {
     public void draw() {
         organismContainer.setLayoutX(Garden.GARDEN_X_PADDING + centerX - collisionRadius);
         organismContainer.setLayoutY(Garden.GARDEN_Y_PADDING + centerY - collisionRadius - (ENERGY_BAR_HEIGHT));
-        organismContainer.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
+//        organismContainer.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
         drawEnergy();
     }
 

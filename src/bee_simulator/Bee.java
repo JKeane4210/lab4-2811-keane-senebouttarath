@@ -1,6 +1,11 @@
 package bee_simulator;
 
+import javafx.scene.CacheHint;
+import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.Effect;
+
 public abstract class Bee extends Organism {
+    private static final int BEE_HEALTH_LOSS = 5;
 
     //---------------- ATTRIBUTES ----------------\\
 
@@ -45,12 +50,23 @@ public abstract class Bee extends Organism {
         }
     }
 
+    public void interactWithBee(Bee bee) {
+        decreaseEnergy(BEE_HEALTH_LOSS);
+        bee.decreaseEnergy(BEE_HEALTH_LOSS);
+    }
+
     private void turnTowardsTarget() {
         organismImage.setRotate(Math.toDegrees(Math.atan2(targetY - centerY, targetX - centerX)) + 90);
     }
 
     public void die() {
-
+        organismContainer.getChildren().removeAll(energyBar, energyBackgroundBar);
+        ColorAdjust adj = new ColorAdjust();
+        adj.setSaturation(-1.0);
+        adj.setBrightness(-0.5);
+        organismImage.setEffect(adj);
+//        organismImage.setCache(true);
+//        organismImage.setCacheHint(CacheHint.SPEED);
     }
 
     public void setTarget() {
@@ -62,6 +78,8 @@ public abstract class Bee extends Organism {
         if (otherOrganism instanceof Flower && lastVisitedFlower != otherOrganism) {
             ((Flower)otherOrganism).interactWithBee(this);
             lastVisitedFlower = (Flower)otherOrganism;
+        } else if (otherOrganism instanceof Bee) {
+            ((Bee)otherOrganism).interactWithBee(this);
         }
     }
 

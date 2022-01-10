@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Garden {
     public static final int GARDEN_WIDTH = 600;
@@ -91,9 +92,11 @@ public class Garden {
 
     public void update() {
         bees.forEach(Bee::update);
-//        bees.stream().filter(bee::isAlive).forEach(bee -> {
-//            bees.stream().filter(otherBee -> bee != otherBee).filter(bee::isCollided).forEach(bee::collide);
-//        });
+        bees.removeIf(bee -> !bee.isAlive());
+        IntStream.range(0, bees.size()).forEach(index -> {
+            Bee bee = bees.get(index);
+            bees.stream().skip(index + 1).filter(bee::isCollided).forEach(bee::collide);
+        });
         bees.stream().filter(Bee::isAlive).forEach(bee ->
                 flowers.stream().filter(bee::isCollided).forEach(bee::collide));
         flowers.forEach(Flower::update);
