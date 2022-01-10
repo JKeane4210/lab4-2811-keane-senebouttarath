@@ -8,6 +8,7 @@ public abstract class Bee extends Organism {
     protected int targetX = 0;
     protected int targetY = 0;
     protected BeeMovementPattern movementPattern;
+    private Flower lastVisitedFlower;
 
     //---------------- METHODS ----------------\\
 
@@ -40,7 +41,12 @@ public abstract class Bee extends Organism {
         }
         if (movementPattern.targetAchieved()) {
             movementPattern.retarget();
+            turnTowardsTarget();
         }
+    }
+
+    private void turnTowardsTarget() {
+        organismImage.setRotate(Math.toDegrees(Math.atan2(targetY - centerY, targetX - centerX)) + 90);
     }
 
     public void die() {
@@ -49,16 +55,13 @@ public abstract class Bee extends Organism {
 
     public void setTarget() {
         movementPattern.retarget();
+        turnTowardsTarget();
     }
 
-//    public void visitFlower(Flower flower) {
-//        targetX = flower.getCenterX();
-//        targetY = flower.getCenterY();
-//    }
-
     public void collide(Organism otherOrganism) {
-        if (otherOrganism instanceof Flower) {
+        if (otherOrganism instanceof Flower && lastVisitedFlower != otherOrganism) {
             ((Flower)otherOrganism).interactWithBee(this);
+            lastVisitedFlower = (Flower)otherOrganism;
         }
     }
 
