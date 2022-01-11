@@ -8,9 +8,14 @@
 package bee_simulator;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+
+import java.awt.event.ActionEvent;
+import java.beans.EventHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -24,11 +29,13 @@ import java.util.stream.IntStream;
  */
 public class Garden {
     public static final int GARDEN_WIDTH = 600;
-    public static final int GARDEN_HEIGHT = 600;
+    public static final int GARDEN_HEIGHT = 550;
     public static final int GARDEN_X_PADDING = 50;
     public static final int GARDEN_Y_PADDING = 50;
-    private static final int INITIAL_FLOWER_COUNT = 12;
-    private static final int INITIAL_BEE_COUNT = 12;
+    private static final int DEFAULT_BABY_BEES = 6;
+    private static final int DEFAULT_BIG_BEES = 6;
+    private static final int DEFAULT_ROSES = 4;
+    private static final int DEFAULT_LILIES = 8;
 
     List<Flower> flowers = new ArrayList<>();
     List<Bee> bees = new ArrayList<>();
@@ -37,46 +44,23 @@ public class Garden {
     private Pane theGarden;
     @FXML
     private VBox natureBookVBox;
-
-    public Garden() {
-        for (int i = 0; i < INITIAL_FLOWER_COUNT; ++i) {
-            int x = (int)(Math.random() * GARDEN_WIDTH);
-            int y = (int)(Math.random() * GARDEN_HEIGHT);
-            if (i % 3 == 0) {
-                flowers.add(new Rose(x, y));
-            } else {
-                flowers.add(new Lily(x, y));
-            }
-        }
-        for (int i = 0; i < INITIAL_BEE_COUNT; ++i) {
-            int x = (int)(Math.random() * GARDEN_WIDTH);
-            int y = (int)(Math.random() * GARDEN_HEIGHT);
-            int movementType = (int)(Math.random() * 2);
-            Bee newBee = i % 2 == 0 ? new BabyBee(x, y) : new BigBee(x, y);
-            BeeMovementPattern movementPattern = movementType % 2 == 0 ?
-                                                    new FlowerOrientedMovement(newBee, this) :
-                                                    new RandomLineMovement(newBee);
-            newBee.setMovementPattern(movementPattern);
-            bees.add(newBee);
-        }
-    }
+    @FXML
+    private TextField roseCountField;
+    @FXML
+    private TextField lilyCountField;
+    @FXML
+    private TextField babyBeeCountField;
+    @FXML
+    private TextField bigBeeCountField;
 
     @FXML
     public void initialize() {              // executed after scene is loaded but before any methods
-        // this is already set in FXML
-//        theGarden.setPrefWidth(GARDEN_WIDTH);
-//        theGarden.setPrefHeight(GARDEN_HEIGHT);
-//        theGarden.setMaxWidth(GARDEN_WIDTH);
-//        theGarden.setMaxHeight(GARDEN_HEIGHT);
-//        theGarden.setMinWidth(GARDEN_WIDTH);
-//        theGarden.setMinHeight(GARDEN_HEIGHT);
         // for fun, set up a gradient background; could probably do in SceneBuilder as well
         // note the label has a Z index of 2 so it is drawn above the panel, otherwise it may be displayed "under" the panel and not be visible
         theGarden.setStyle("-fx-background-color: linear-gradient(to bottom right, derive(forestgreen, 20%), derive(forestgreen, -40%));");
         theGarden.setFocusTraversable(true); // ensure garden pane will receive keypresses
 
-        initializeFlowers();
-        initializeBees();
+        createGarden();
         NatureBook natureBook = new NatureBook(natureBookVBox);
         natureBook.draw();
     }
@@ -84,6 +68,66 @@ public class Garden {
     @FXML
     public void onKeyPressed(KeyEvent keyEvent) {
         update();
+    }
+
+    @FXML
+    public void setDefaults() {
+        roseCountField.setText("" + DEFAULT_ROSES);
+        lilyCountField.setText("" + DEFAULT_LILIES);
+        babyBeeCountField.setText("" + DEFAULT_BABY_BEES);
+        bigBeeCountField.setText("" + DEFAULT_BIG_BEES);
+        createGarden();
+    }
+
+    @FXML
+    public void createGarden() {
+        theGarden.getChildren().clear();
+        flowers.clear();
+        bees.clear();
+        try {
+            // ROSES
+            for (int i = 0; i < Integer.parseInt(roseCountField.getText()); ++i) {
+                int x = (int) (Math.random() * GARDEN_WIDTH);
+                int y = (int) (Math.random() * GARDEN_HEIGHT);
+                flowers.add(new Rose(x, y));
+            }
+            // LILIES
+            for (int i = 0; i < Integer.parseInt(lilyCountField.getText()); ++i) {
+                int x = (int) (Math.random() * GARDEN_WIDTH);
+                int y = (int) (Math.random() * GARDEN_HEIGHT);
+                flowers.add(new Lily(x, y));
+            }
+            // BABY BEES
+            for (int i = 0; i < Integer.parseInt(babyBeeCountField.getText()); ++i) {
+                int x = (int) (Math.random() * GARDEN_WIDTH);
+                int y = (int) (Math.random() * GARDEN_HEIGHT);
+                int movementType = (int) (Math.random() * 2);
+                BabyBee newBee = new BabyBee(x, y);
+                BeeMovementPattern movementPattern = movementType % 2 == 0 && flowers.size() > 0 ?
+                        new FlowerOrientedMovement(newBee, this) :
+                        new RandomLineMovement(newBee);
+                newBee.setMovementPattern(movementPattern);
+                bees.add(newBee);
+            }
+            // BIG BEES
+            for (int i = 0; i < Integer.parseInt(bigBeeCountField.getText()); ++i) {
+                int x = (int) (Math.random() * GARDEN_WIDTH);
+                int y = (int) (Math.random() * GARDEN_HEIGHT);
+                int movementType = (int) (Math.random() * 2);
+                BigBee newBee = new BigBee(x, y);
+                BeeMovementPattern movementPattern = movementType % 2 == 0 && flowers.size() > 0 ?
+                        new FlowerOrientedMovement(newBee, this) :
+                        new RandomLineMovement(newBee);
+                newBee.setMovementPattern(movementPattern);
+                bees.add(newBee);
+            }
+            initializeFlowers();
+            initializeBees();
+        } catch (NumberFormatException e) {
+            Alert numberFormatAlert = new Alert(Alert.AlertType.ERROR);
+            numberFormatAlert.setContentText("One of the garden creation fields is not an integer. Please try again.");
+            numberFormatAlert.showAndWait();
+        }
     }
 
     public void initializeBees() {

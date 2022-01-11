@@ -9,7 +9,10 @@
 
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<GridPane alignment="center" hgap="10" onKeyPressed="#onKeyPressed" vgap="10" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bee_simulator.Garden">
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<GridPane alignment="center" hgap="10" onKeyPressed="#onKeyPressed" vgap="10" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bee_simulator.Garden"
+          prefWidth="900" prefHeight="700" minWidth="900" minHeight="700" maxWidth="700" maxHeight="900">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -18,9 +21,47 @@
    </rowConstraints>
    <children>
       <HBox>
-         <Pane id="theGarden" fx:id="theGarden" prefHeight="700.0" prefWidth="700.0">
-
-         </Pane>
+         <VBox>
+            <style>
+               -fx-background-color: white
+            </style>
+            <Pane id="theGarden" fx:id="theGarden" prefHeight="650.0" prefWidth="700.0"/>
+            <HBox spacing="10" alignment="CENTER">
+               <style>
+                  -fx-background-color: white
+               </style>
+               <VBox alignment="TOP_CENTER">
+                  <style>
+                     -fx-background-color: white
+                  </style>
+                  <Label alignment="TOP_CENTER" text="Roses"/>
+                  <TextField fx:id="roseCountField" text="4" prefWidth="100" maxWidth="100"/>
+               </VBox>
+               <VBox alignment="TOP_CENTER">
+                  <style>
+                     -fx-background-color: white
+                  </style>
+                  <Label alignment="TOP_CENTER" text="Lilies"/>
+                  <TextField fx:id="lilyCountField" text="8" prefWidth="100" maxWidth="100"/>
+               </VBox>
+               <VBox alignment="TOP_CENTER">
+                  <style>
+                     -fx-background-color: white
+                  </style>
+                  <Label alignment="TOP_CENTER" text="Baby Bees"/>
+                  <TextField fx:id="babyBeeCountField" text="6" prefWidth="100" maxWidth="100"/>
+               </VBox>
+               <VBox alignment="TOP_CENTER">
+                  <style>
+                     -fx-background-color: white
+                  </style>
+                  <Label alignment="TOP_CENTER" text="Big Bees"/>
+                  <TextField fx:id="bigBeeCountField" text="6"  prefWidth="100" maxWidth="100"/>
+               </VBox>
+               <Button alignment="CENTER" text="Set Defaults" onAction="#setDefaults"/>
+               <Button alignment="CENTER" text="Create Garden" onAction="#createGarden"/>
+            </HBox>
+         </VBox>
          <VBox id="natureBookPane" fx:id="natureBookVBox" prefHeight="700.0" prefWidth="200.0" alignment="TOP_CENTER" spacing="25">
             <style>
                -fx-background-color: white
