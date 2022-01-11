@@ -1,5 +1,19 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Lab 4: Bees
+ * Author:     Jonathan Keane & Kyle Senebouttarath
+ * Date:       1/6/22
+ */
 package bee_simulator;
 
+/**
+ * The BabyBee is a type of bee that is a small bee. It has a small amount of energy, but it’s faster and has a
+ * smaller collision area. It has the same responsibilities as a bee, but it has defined properties and the
+ * additional responsibility of handling the bee's ability to grow up if it is reaches maximum health.
+ *
+ * @author Kyle Senebouttarath
+ */
 public class BabyBee extends Bee {
 
     //---------------- CONSTANTS ----------------\\

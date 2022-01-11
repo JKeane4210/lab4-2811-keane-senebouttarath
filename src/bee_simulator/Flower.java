@@ -1,5 +1,20 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Lab 4: Bees
+ * Author:     Jonathan Keane & Kyle Senebouttarath
+ * Date:       1/6/22
+ */
 package bee_simulator;
 
+/**
+ * A flower is responsible for representing a flower within the garden and interacting with bees that visit them.
+ * Flowers are stationary organisms that attract bees. They either give bees’ health when
+ * interacted with or drain bees’ energy if it’s a bad flower. Flowers only have a limited
+ * amount of pollen (their "energy") that slowly recharges over time. Flowers cannot die.
+ *
+ * @author Jonathan Keane
+ */
 public abstract class Flower extends Organism {
     
     public Flower(int centerX, int centerY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String description, boolean shouldDrawEnergy) {
@@ -8,30 +23,6 @@ public abstract class Flower extends Organism {
 
     public Flower(int centerX, int centerY, int collisionRadius, int maxEnergy, int energy, String imgUrl, String description) {
         this(centerX, centerY, collisionRadius, maxEnergy, energy, imgUrl, description, true);
-    }
-
-    public void draw() {
-        super.draw();
-        //I commented this out for now so the flowers would draw in the center
-        //Some boundary check stuff like this should be implemented in the organism class!
-        /*
-        if ( centerX < 0 )
-            centerX = 0;
-        else if (Garden.GARDEN_WIDTH > 0 && centerX > Garden.GARDEN_WIDTH - 10)
-            // note: getWidth() is 0 when first load the scene, so don't relocate the bee in that case
-            centerX = Garden.GARDEN_WIDTH - 10;
-        if (centerY < 0)
-            centerY = 0;
-        else if (Garden.GARDEN_HEIGHT > 0 && centerY > Garden.GARDEN_HEIGHT - 10)
-            centerY = Garden.GARDEN_HEIGHT - 10;
-        organismContainer.setLayoutX(centerX);
-        organismContainer.setLayoutY(centerY);
-
-         */
-    }
-
-    public void update() {
-
     }
 
     @Override

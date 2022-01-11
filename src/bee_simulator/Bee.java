@@ -1,7 +1,22 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Lab 4: Bees
+ * Author:     Jonathan Keane & Kyle Senebouttarath
+ * Date:       1/6/22
+ */
 package bee_simulator;
 
 import javafx.scene.effect.ColorAdjust;
 
+/**
+ * A Bee is responsible for representing bees within the garden. Bees are moving organisms that follow a movement
+ * pattern to move around the garden. When bees hit a flower, they will attempt to take energy from the flower
+ * for themselves. If a bee hits another bee, they will crash, and both lose some energy. When bees run out of
+ * energy, they die. Bees lose energy as they move.
+ *
+ * @author Kyle Senebouttarath
+ */
 public abstract class Bee extends Organism {
     private static final int BEE_HEALTH_LOSS = 5;
 

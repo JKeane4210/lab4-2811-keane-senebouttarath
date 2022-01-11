@@ -1,14 +1,27 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Lab 4: Bees
+ * Author:     Jonathan Keane & Kyle Senebouttarath
+ * Date:       1/6/22
+ */
 package bee_simulator;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
+/**
+ * The Garden is responsible for holding a collection of different organisms that exist inside it. These
+ * organisms will be either bees or flowers. The size of the garden should not overlap with the NatureBook.
+ * When the Garden is initially created, it will have a set number of bees and flowers in it.
+ *
+ * @author Jonathan Keane & Kyle Senebouttarath
+ */
 public class Garden {
     public static final int GARDEN_WIDTH = 600;
     public static final int GARDEN_HEIGHT = 600;

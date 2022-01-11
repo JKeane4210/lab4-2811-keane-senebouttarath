@@ -1,3 +1,10 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Lab 4: Bees
+ * Author:     Jonathan Keane & Kyle Senebouttarath
+ * Date:       1/6/22
+ */
 package bee_simulator;
 
 import javafx.geometry.Pos;
@@ -5,6 +12,12 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 
+/**
+ * The NatureBook class has descriptions and pictures of all the natural things that can be found within
+ * the garden! This includes all flowers and bees and their descriptive information.
+ *
+ * @author Jonathan Keane
+ */
 public class NatureBook {
     private final VBox mainVBox;
 

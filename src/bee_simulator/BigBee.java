@@ -1,5 +1,19 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Lab 4: Bees
+ * Author:     Jonathan Keane & Kyle Senebouttarath
+ * Date:       1/6/22
+ */
 package bee_simulator;
 
+/**
+ * The BigBee is a type of bee that is a large bee. Because of its size, it will be more likely to run
+ * into other organisms. However, it has more energy. It has the same responsibilities of a normal bee,
+ * such as handling movement and dying, but it is has set properties to make it larger and slower.
+ *
+ * @author Kyle Senebouttarath
+ */
 public class BigBee extends Bee {
 
     //---------------- CONSTANTS ----------------\\

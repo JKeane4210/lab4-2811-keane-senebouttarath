@@ -1,14 +1,25 @@
+/*
+ * Course:     SE 2811
+ * Term:       Winter 2020-21
+ * Assignment: Lab 4: Bees
+ * Author:     Jonathan Keane & Kyle Senebouttarath
+ * Date:       1/6/22
+ */
 package bee_simulator;
 
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 
+/**
+ * An organism responsible for recognizing and handling collisions, managing health, and managing
+ * positioning for an organism in the garden. A Bee or Flower can be an Organism in the garden.
+ *
+ * @author Kyle Senebouttarath (& some from Jonathan Keane)
+ */
 public abstract class Organism {
 
     //-------- CONSTANTS --------\\
