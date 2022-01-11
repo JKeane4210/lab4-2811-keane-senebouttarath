@@ -14,8 +14,8 @@ public class Garden {
     public static final int GARDEN_HEIGHT = 600;
     public static final int GARDEN_X_PADDING = 50;
     public static final int GARDEN_Y_PADDING = 50;
-    private static final int INITIAL_FLOWER_COUNT = 20;
-    private static final int INITIAL_BEE_COUNT = 10;
+    private static final int INITIAL_FLOWER_COUNT = 12;
+    private static final int INITIAL_BEE_COUNT = 12;
 
     List<Flower> flowers = new ArrayList<>();
     List<Bee> bees = new ArrayList<>();
@@ -29,7 +29,7 @@ public class Garden {
         for (int i = 0; i < INITIAL_FLOWER_COUNT; ++i) {
             int x = (int)(Math.random() * GARDEN_WIDTH);
             int y = (int)(Math.random() * GARDEN_HEIGHT);
-            if (i % 2 == 0) {
+            if (i % 3 == 0) {
                 flowers.add(new Rose(x, y));
             } else {
                 flowers.add(new Lily(x, y));
