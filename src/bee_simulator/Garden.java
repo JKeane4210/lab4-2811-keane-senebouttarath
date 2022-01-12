@@ -79,10 +79,9 @@ public class Garden {
 
     private BeeMovementPattern generateNewMovementPattern(Bee bee) {
         int movementType = (int) (Math.random() * 2);
-        BeeMovementPattern movementPattern = movementType % 2 == 0 && flowers.size() > 0 ?
+        return movementType % 2 == 0 && flowers.size() > 0 ?
                 new FlowerOrientedMovement(bee, this) :
                 new RandomLineMovement(bee);
-        return movementPattern;
     }
 
     @FXML
@@ -147,17 +146,18 @@ public class Garden {
 
     public void update() {
 
-        List<Bee> beesToRemove = new ArrayList<Bee>();
-        List<Bee> beesToAdd = new ArrayList<Bee>();
-        bees.forEach((b) -> {
-            if (b instanceof BabyBee && ((BabyBee) b).canGrowUp()) {
-                BigBee newBigBee = new BigBee((BabyBee) b);
+        List<Bee> beesToRemove = new ArrayList<>();
+        List<Bee> beesToAdd = new ArrayList<>();
+        bees.forEach((bee) -> {
+            if (bee instanceof BabyBee && ((BabyBee) bee).canGrowUp()) {
+                BigBee newBigBee = new BigBee((BabyBee) bee);
                 newBigBee.setMovementPattern(generateNewMovementPattern(newBigBee));
 
-                b.removeFromGarden(theGarden);
+                bee.removeFromGarden(theGarden);
                 newBigBee.addToGarden(theGarden);
                 beesToAdd.add(newBigBee);
-                beesToRemove.add(b);
+                newBigBee.turnTowardsTarget();
+                beesToRemove.add(bee);
             }
         });
         bees.removeAll(beesToRemove);
