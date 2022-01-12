@@ -22,7 +22,7 @@ public class Rose extends Flower {
     private static final int BEE_HEALTH_LOSS = 15;
     private static final int ROSE_HEALTH_LOSS = 60;
     private static final int ROSE_HEALTH_REGEN = 1;
-    private static final String ROSE_DESCRIPTION = "Thorny flower. Damages bees that visit it.";
+    private static final String ROSE_DESCRIPTION = "Thorny flower. Damages bees that visit it if it has enough energy to do so.";
 
     public Rose(int centerX, int centerY, boolean shouldDrawEnergy) {
         super(centerX, centerY, ROSE_COLLISION_RADIUS, ROSE_MAX_HEALTH, ROSE_INITIAL_HEALTH, "Assets/rose.png", ROSE_DESCRIPTION, shouldDrawEnergy);
