@@ -148,17 +148,18 @@ public class Garden {
     public void update() {
 
         List<Bee> beesToRemove = new ArrayList<Bee>();
+        List<Bee> beesToAdd = new ArrayList<Bee>();
         bees.forEach((b) -> {
             if (b instanceof BabyBee && ((BabyBee) b).canGrowUp()) {
-                BigBee newBigBee = new BigBee(b.getCenterX(), b.getCenterY());
-                newBigBee.setMovementPattern(b.getMovementPattern());
+                BigBee newBigBee = new BigBee((BabyBee) b);
                 b.removeFromGarden(theGarden);
                 newBigBee.addToGarden(theGarden);
-                bees.add(newBigBee);
+                beesToAdd.add(newBigBee);
                 beesToRemove.add(b);
             }
         });
         bees.removeAll(beesToRemove);
+        bees.addAll(beesToAdd);
 
         bees.forEach(Bee::update);
         bees.removeIf(bee -> !bee.isAlive());

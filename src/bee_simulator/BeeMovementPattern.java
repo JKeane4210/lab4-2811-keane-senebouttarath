@@ -8,7 +8,7 @@
 package bee_simulator;
 
 public abstract class BeeMovementPattern {
-    protected final Bee bee;
+    protected Bee bee;
 
     public BeeMovementPattern(Bee bee) {
         this.bee = bee;
@@ -25,6 +25,10 @@ public abstract class BeeMovementPattern {
 
         bee.centerX += xMoveDist;
         bee.centerY += yMoveDist;
+    }
+
+    public void setBee(Bee bee) {
+        this.bee = bee;
     }
 
     public abstract boolean targetAchieved();
