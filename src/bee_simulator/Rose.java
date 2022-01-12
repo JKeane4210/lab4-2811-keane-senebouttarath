@@ -8,9 +8,10 @@
 package bee_simulator;
 
 /**
- * A type of flower that has the responsibility of taking away the energy from a bee when it collides with one.
- * The Rose will lose energy itself when it drains a bee of its energy. It can only drain energy when it has
- * enough itself. It will drain a set amount of energy only. It regenerates energy over time.
+ * A type of flower that has the responsibility of taking away the energy from a bee when it collides with one
+ * (either has enough energy to take from the bee or not). The Rose will lose energy itself when it drains a bee of its
+ * energy. It can only drain energy when it has enough itself. It will drain a set amount of energy only. It
+ * regenerates energy over time.
  *
  * @author Jonathan Keane
  */
@@ -33,7 +34,7 @@ public class Rose extends Flower {
 
     @Override
     public void interactWithBee(Bee bee) {
-        if (energy > 0) {
+        if (energy >= ROSE_HEALTH_LOSS) {
             bee.decreaseEnergy(BEE_HEALTH_LOSS);
             decreaseEnergy(ROSE_HEALTH_LOSS);
         }

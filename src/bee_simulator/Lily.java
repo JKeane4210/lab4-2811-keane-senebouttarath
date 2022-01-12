@@ -9,8 +9,8 @@ package bee_simulator;
 
 /**
  * A Lily is a type of flower that is responsible for giving energy to a bee with it collides with one.
- * The Lily will give the bee energy and will lose energy in doing so. It regenerates pollen (it's "energy")
- * over time.
+ * If the Lily has enough energy, it will give the bee energy and will lose energy in doing so.
+ * It regenerates pollen (it's "energy") over time.
  *
  * @author Jonathan Keane
  */
@@ -18,7 +18,7 @@ public class Lily extends Flower {
     private static final int LILY_INITIAL_HEALTH = 80;
     private static final int LILY_MAX_HEALTH = 120;
     private static final int LILY_COLLISION_RADIUS = 18;
-    private static final int BEE_HEALTH_GAIN = 50;
+    private static final int BEE_HEALTH_GAIN = 40;
     private static final int LILY_HEALTH_LOSS = 50;
     private static final String LILY_DESCRIPTION = "Pleasant flower. Gives health to bees that visit it.";
     private static final int LILY_HEALTH_REGEN = 2;
@@ -37,7 +37,7 @@ public class Lily extends Flower {
 
     @Override
     public void interactWithBee(Bee bee) {
-        if (energy > 0) {
+        if (energy >= LILY_HEALTH_LOSS) {
             bee.increaseEnergy(BEE_HEALTH_GAIN);
             decreaseEnergy(LILY_HEALTH_LOSS);
         }
