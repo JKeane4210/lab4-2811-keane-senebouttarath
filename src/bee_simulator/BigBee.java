@@ -42,8 +42,7 @@ public class BigBee extends Bee {
         super(babyBee.getCenterX(), babyBee.getCenterY(), COLLISION_RADIUS, MAX_ENERGY, INIT_ENERGY, IMG, DESC, MOVE_DISTANCE);
         this.targetX = babyBee.targetX;
         this.targetY = babyBee.targetY;
-        //this.movementPattern = babyBee.getMovementPattern();
-        //this.movementPattern.setBee(this);
+        this.movementPattern = babyBee.getMovementPattern();
     }
 
     public void draw() {

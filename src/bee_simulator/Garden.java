@@ -58,7 +58,7 @@ public class Garden {
         theGarden.setStyle("-fx-background-color: linear-gradient(to bottom right, derive(forestgreen, 20%), derive(forestgreen, -40%));");
         theGarden.setFocusTraversable(true); // ensure garden pane will receive keypresses
 
-        createGarden();
+        plantGarden();
         NatureBook natureBook = new NatureBook(natureBookVBox);
         natureBook.draw();
     }
@@ -74,7 +74,7 @@ public class Garden {
         lilyCountField.setText("" + DEFAULT_LILIES);
         babyBeeCountField.setText("" + DEFAULT_BABY_BEES);
         bigBeeCountField.setText("" + DEFAULT_BIG_BEES);
-        createGarden();
+        plantGarden();
     }
 
     private BeeMovementPattern generateNewMovementPattern(Bee bee) {
@@ -85,7 +85,7 @@ public class Garden {
     }
 
     @FXML
-    public void createGarden() {
+    public void plantGarden() {
         theGarden.getChildren().clear();
         flowers.clear();
         bees.clear();
@@ -149,9 +149,8 @@ public class Garden {
         List<Bee> beesToRemove = new ArrayList<>();
         List<Bee> beesToAdd = new ArrayList<>();
         bees.forEach((bee) -> {
-            if (bee instanceof BabyBee && ((BabyBee) bee).canGrowUp()) {
-                BigBee newBigBee = new BigBee((BabyBee) bee);
-                newBigBee.setMovementPattern(generateNewMovementPattern(newBigBee));
+            if (bee instanceof BabyBee && ((BabyBee) bee).isGrownUp()) {
+                BigBee newBigBee = ((BabyBee) bee).growUp();
 
                 bee.removeFromGarden(theGarden);
                 newBigBee.addToGarden(theGarden);

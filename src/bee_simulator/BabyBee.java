@@ -27,7 +27,7 @@ public class BabyBee extends Bee {
 
     //---------------- ATTRIBUTES ----------------\\
 
-    private boolean ableToGrowUp = false;
+    private boolean isGrownUp = false;
 
     //---------------- METHODS ----------------\\
 
@@ -45,7 +45,7 @@ public class BabyBee extends Bee {
 
     public void update() {
         if (energy >= maxEnergy) {
-            ableToGrowUp = true;
+            isGrownUp = true;
         }
         super.update();
     }
@@ -54,7 +54,13 @@ public class BabyBee extends Bee {
         super.collide(otherOrganism);
     }
 
-    public boolean canGrowUp() {
-        return ableToGrowUp;
+    public BigBee growUp() {
+        BigBee bigBee = new BigBee(this);
+        movementPattern.setBee(bigBee);
+        return bigBee;
+    }
+
+    public boolean isGrownUp() {
+        return isGrownUp;
     }
 }

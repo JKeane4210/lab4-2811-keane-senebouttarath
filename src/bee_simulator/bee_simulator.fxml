@@ -65,7 +65,7 @@
                   <TextField fx:id="bigBeeCountField" text="6"  prefWidth="100" maxWidth="100"/>
                </VBox>
                <Button alignment="CENTER" text="Set Defaults" onAction="#setDefaults"/>
-               <Button alignment="CENTER" text="Create Garden" onAction="#createGarden"/>
+               <Button alignment="CENTER" text="Create Garden" onAction="#plantGarden"/>
             </HBox>
          </VBox>
          <VBox id="natureBookPane" fx:id="natureBookVBox" prefHeight="700.0" prefWidth="200.0" alignment="TOP_CENTER" spacing="5">

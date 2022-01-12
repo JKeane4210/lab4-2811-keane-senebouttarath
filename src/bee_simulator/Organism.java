@@ -30,12 +30,9 @@ public abstract class Organism {
 
     protected int centerX;
     protected int centerY;
-
     protected int collisionRadius;
-
     protected int maxEnergy;
     protected int energy;
-
     protected String description;
 
     protected Pane organismContainer;
