@@ -73,7 +73,7 @@ public abstract class Bee extends Organism {
     }
 
     public void die() {
-        organismContainer.getChildren().removeAll(energyBar, energyBackgroundBar);
+        organismContainer.getChildren().removeAll(energyBar, energyBackgroundBar, energyBarText);
         ColorAdjust adj = new ColorAdjust();
         adj.setSaturation(-1.0);
         adj.setBrightness(-0.5);

@@ -42,7 +42,7 @@ public abstract class Organism {
     protected ImageView organismImage;
     protected Rectangle energyBackgroundBar;
     protected Rectangle energyBar;
-    private Text energyBarText;
+    protected Text energyBarText;
 
     //---------------- METHODS ----------------\\
 
@@ -71,9 +71,12 @@ public abstract class Organism {
             energyBar = new Rectangle(collisionRadius * 2, ENERGY_BAR_HEIGHT, Color.LIGHTYELLOW);
             energyBar.setX(0);
             energyBar.setY(0);
+            energyBarText = new Text();
+            energyBarText.setX(0);
+            energyBarText.setY(-5);
             drawEnergyBackground();
             drawEnergy();
-            organismContainer.getChildren().addAll(energyBackgroundBar, energyBar);
+            organismContainer.getChildren().addAll(energyBackgroundBar, energyBar, energyBarText);
         }
 
         organismImage = new ImageView(new Image("file:" + imgUrl));
@@ -113,6 +116,7 @@ public abstract class Organism {
     public void drawEnergy() {
         energyBar.setWidth((int) (collisionRadius * 2 * (energy / (double) maxEnergy)));
         energyBar.toFront();
+        energyBarText.setText("" + energy + "/" + getMaxEnergy());
     }
 
     public void drawEnergyBackground() {
