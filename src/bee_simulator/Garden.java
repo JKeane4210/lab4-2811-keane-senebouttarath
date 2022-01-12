@@ -145,7 +145,7 @@ public class Garden {
     }
 
     public void update() {
-
+        // BABIES GROWING UP
         List<Bee> beesToRemove = new ArrayList<>();
         List<Bee> beesToAdd = new ArrayList<>();
         bees.forEach((bee) -> {
@@ -162,16 +162,17 @@ public class Garden {
         });
         bees.removeAll(beesToRemove);
         bees.addAll(beesToAdd);
-
+        // UPDATING BEES & FLOWERS
         bees.forEach(Bee::update);
+        flowers.forEach(Flower::update);
         bees.removeIf(bee -> !bee.isAlive());
+        // HANDLING COLLISIONS
         IntStream.range(0, bees.size()).forEach(index -> {
             Bee bee = bees.get(index);
             bees.stream().skip(index + 1).filter(bee::isCollided).forEach(bee::collide);
         });
         bees.stream().filter(Bee::isAlive).forEach(bee ->
                 flowers.stream().filter(bee::isCollided).forEach(bee::collide));
-        flowers.forEach(Flower::update);
         draw();
     }
 
