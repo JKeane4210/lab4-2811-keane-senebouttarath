@@ -77,6 +77,14 @@ public class Garden {
         createGarden();
     }
 
+    private BeeMovementPattern generateNewMovementPattern(Bee bee) {
+        int movementType = (int) (Math.random() * 2);
+        BeeMovementPattern movementPattern = movementType % 2 == 0 && flowers.size() > 0 ?
+                new FlowerOrientedMovement(bee, this) :
+                new RandomLineMovement(bee);
+        return movementPattern;
+    }
+
     @FXML
     public void createGarden() {
         theGarden.getChildren().clear();
@@ -99,24 +107,16 @@ public class Garden {
             for (int i = 0; i < Integer.parseInt(babyBeeCountField.getText()); ++i) {
                 int x = (int) (Math.random() * GARDEN_WIDTH);
                 int y = (int) (Math.random() * GARDEN_HEIGHT);
-                int movementType = (int) (Math.random() * 2);
                 BabyBee newBee = new BabyBee(x, y);
-                BeeMovementPattern movementPattern = movementType % 2 == 0 && flowers.size() > 0 ?
-                        new FlowerOrientedMovement(newBee, this) :
-                        new RandomLineMovement(newBee);
-                newBee.setMovementPattern(movementPattern);
+                newBee.setMovementPattern(generateNewMovementPattern(newBee));
                 bees.add(newBee);
             }
             // BIG BEES
             for (int i = 0; i < Integer.parseInt(bigBeeCountField.getText()); ++i) {
                 int x = (int) (Math.random() * GARDEN_WIDTH);
                 int y = (int) (Math.random() * GARDEN_HEIGHT);
-                int movementType = (int) (Math.random() * 2);
                 BigBee newBee = new BigBee(x, y);
-                BeeMovementPattern movementPattern = movementType % 2 == 0 && flowers.size() > 0 ?
-                        new FlowerOrientedMovement(newBee, this) :
-                        new RandomLineMovement(newBee);
-                newBee.setMovementPattern(movementPattern);
+                newBee.setMovementPattern(generateNewMovementPattern(newBee));
                 bees.add(newBee);
             }
             initializeFlowers();
@@ -152,6 +152,8 @@ public class Garden {
         bees.forEach((b) -> {
             if (b instanceof BabyBee && ((BabyBee) b).canGrowUp()) {
                 BigBee newBigBee = new BigBee((BabyBee) b);
+                newBigBee.setMovementPattern(generateNewMovementPattern(newBigBee));
+
                 b.removeFromGarden(theGarden);
                 newBigBee.addToGarden(theGarden);
                 beesToAdd.add(newBigBee);

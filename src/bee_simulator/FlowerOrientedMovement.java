@@ -25,6 +25,10 @@ public class FlowerOrientedMovement extends BeeMovementPattern {
 
     @Override
     public boolean targetAchieved() {
+        if (destinationFlower == null) {
+            retarget();
+            bee.turnTowardsTarget();
+        }
         return destinationFlower.isCollided(bee);
     }
 

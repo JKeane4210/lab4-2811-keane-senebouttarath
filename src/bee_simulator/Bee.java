@@ -68,7 +68,7 @@ public abstract class Bee extends Organism {
         bee.decreaseEnergy(BEE_HEALTH_LOSS);
     }
 
-    private void turnTowardsTarget() {
+    public void turnTowardsTarget() {
         organismImage.setRotate(Math.toDegrees(Math.atan2(targetY - centerY, targetX - centerX)) + 90);
     }
 
