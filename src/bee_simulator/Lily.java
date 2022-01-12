@@ -18,8 +18,8 @@ public class Lily extends Flower {
     private static final int LILY_INITIAL_HEALTH = 80;
     private static final int LILY_MAX_HEALTH = 120;
     private static final int LILY_COLLISION_RADIUS = 18;
-    private static final int BEE_HEALTH_GAIN = 40;
-    private static final int LILY_HEALTH_LOSS = 50;
+    public static final int BEE_HEALTH_GAIN = 40;
+    public static final int LILY_HEALTH_LOSS = 50;
     private static final String LILY_DESCRIPTION = "Pleasant flower. Gives health to bees that visit it if it has enough energy to do so.";
     private static final int LILY_HEALTH_REGEN = 2;
 

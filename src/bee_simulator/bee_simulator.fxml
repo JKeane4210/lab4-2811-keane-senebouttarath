@@ -62,7 +62,7 @@
                <Button alignment="CENTER" text="Create Garden" onAction="#createGarden"/>
             </HBox>
          </VBox>
-         <VBox id="natureBookPane" fx:id="natureBookVBox" prefHeight="700.0" prefWidth="200.0" alignment="TOP_CENTER" spacing="10">
+         <VBox id="natureBookPane" fx:id="natureBookVBox" prefHeight="700.0" prefWidth="200.0" alignment="TOP_CENTER" spacing="5">
             <style>
                -fx-background-color: white
             </style>

@@ -19,8 +19,8 @@ public class Rose extends Flower {
     private static final int ROSE_INITIAL_HEALTH = 100;
     private static final int ROSE_MAX_HEALTH = 150;
     private static final int ROSE_COLLISION_RADIUS = 20;
-    private static final int BEE_HEALTH_LOSS = 15;
-    private static final int ROSE_HEALTH_LOSS = 60;
+    public static final int BEE_HEALTH_LOSS = 15;
+    public static final int ROSE_HEALTH_LOSS = 60;
     private static final int ROSE_HEALTH_REGEN = 1;
     private static final String ROSE_DESCRIPTION = "Thorny flower. Damages bees that visit it if it has enough energy to do so.";
 
