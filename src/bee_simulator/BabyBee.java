@@ -18,7 +18,7 @@ public class BabyBee extends Bee {
 
     //---------------- CONSTANTS ----------------\\
 
-    private static final int COLLISION_RADIUS = 10;
+    private static final int COLLISION_RADIUS = 12;
     private static final int MAX_ENERGY = 200;
     private static final int INIT_ENERGY = 130;
     private static final int MOVE_DISTANCE = 30;
