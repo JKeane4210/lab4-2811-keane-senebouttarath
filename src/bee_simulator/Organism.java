@@ -62,7 +62,7 @@ public abstract class Organism {
 
         organismContainer = new Pane();
         organismContainer.setMaxWidth(collisionRadius * 2);
-        organismContainer.setMaxHeight(collisionRadius * 2 + ENERGY_BAR_HEIGHT);
+        organismContainer.setMaxHeight(shouldDrawEnergy ? collisionRadius * 2 + ENERGY_BAR_HEIGHT : collisionRadius * 2);
 
         if (shouldDrawEnergy) {
             energyBackgroundBar = new Rectangle(collisionRadius * 2, ENERGY_BAR_HEIGHT, Color.GRAY);
@@ -79,7 +79,9 @@ public abstract class Organism {
         organismImage = new ImageView(new Image("file:" + imgUrl));
         organismImage.setPreserveRatio(true);
         organismImage.setFitWidth(collisionRadius * 2);
-        organismImage.setY(ENERGY_BAR_HEIGHT);
+        if (shouldDrawEnergy) {
+            organismImage.setY(ENERGY_BAR_HEIGHT);
+        }
 
         organismContainer.getChildren().addAll(organismImage);
     }

@@ -11,7 +11,9 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
@@ -33,14 +35,23 @@ public class NatureBook {
     private void addOrganismInfo(Organism organism, String name, String ... extraFields) {
         VBox organismVBox = new VBox();
         organismVBox.setAlignment(Pos.TOP_CENTER);
+        // PICTURE & NAME BOX
         HBox nameAndPictureHBox = new HBox();
         nameAndPictureHBox.setAlignment(Pos.CENTER);
         nameAndPictureHBox.setSpacing(20);
         nameAndPictureHBox.setPadding(new Insets(0, 0, 5, 0));
+        // NAME
         Label nameLabel = new Label(name);
         nameLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
-        nameAndPictureHBox.getChildren().addAll(organism.getOrganismContainer(), nameLabel);
+        // PICTURE
+        VBox imageBox = new VBox();
+        imageBox.setAlignment(Pos.CENTER);
+        imageBox.setStyle("-fx-background-color: green; -fx-border-color: black; -fx-border-width: 2");
+        imageBox.setPadding(new Insets(2, 5, 5, 5));
+        imageBox.getChildren().add(organism.getOrganismContainer());
+        nameAndPictureHBox.getChildren().addAll(imageBox, nameLabel);
         organismVBox.getChildren().add(nameAndPictureHBox);
+        // DESCRIPTION & OTHER INFO
         Label descriptionLabel = new Label(organism.getDescription());
         descriptionLabel.setWrapText(true);
         descriptionLabel.setTextAlignment(TextAlignment.CENTER);

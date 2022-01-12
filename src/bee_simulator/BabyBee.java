@@ -22,7 +22,7 @@ public class BabyBee extends Bee {
     private static final int MAX_ENERGY = 200;
     private static final int INIT_ENERGY = 130;
     private static final int MOVE_DISTANCE = 30;
-    private static final String IMG = "./Assets/bee.png";
+    private static final String IMG = "./Assets/babybee.png";
     private static final String DESC = "A bee with a small amount of fast, but is very fast. If it reaches full health, it becomes a big bee.";
 
     //---------------- ATTRIBUTES ----------------\\

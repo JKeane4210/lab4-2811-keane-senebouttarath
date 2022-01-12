@@ -18,7 +18,7 @@ public class BigBee extends Bee {
 
     //---------------- CONSTANTS ----------------\\
 
-    private static final int COLLISION_RADIUS = 20;
+    private static final int COLLISION_RADIUS = 25;
     private static final int MAX_ENERGY = 300;
     private static final int INIT_ENERGY = 200;
     private static final int MOVE_DISTANCE = 15;

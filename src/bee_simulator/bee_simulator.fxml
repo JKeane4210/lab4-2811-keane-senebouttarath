@@ -24,38 +24,44 @@
          <VBox>
             <style>
                -fx-background-color: white
+                    
             </style>
             <Pane id="theGarden" fx:id="theGarden" prefHeight="650.0" prefWidth="700.0"/>
             <HBox spacing="10" alignment="CENTER">
                <style>
                   -fx-background-color: white
+                    
                </style>
                <VBox alignment="TOP_CENTER">
                   <style>
                      -fx-background-color: white
+                    
                   </style>
-                  <Label alignment="TOP_CENTER" text="Roses"/>
+                  <Label alignment="TOP_CENTER" text="Roses" textFill="white"/>
                   <TextField fx:id="roseCountField" text="4" prefWidth="100" maxWidth="100"/>
                </VBox>
                <VBox alignment="TOP_CENTER">
                   <style>
                      -fx-background-color: white
+                    
                   </style>
-                  <Label alignment="TOP_CENTER" text="Lilies"/>
+                  <Label alignment="TOP_CENTER" text="Lilies" textFill="white"/>
                   <TextField fx:id="lilyCountField" text="8" prefWidth="100" maxWidth="100"/>
                </VBox>
                <VBox alignment="TOP_CENTER">
                   <style>
                      -fx-background-color: white
+                    
                   </style>
-                  <Label alignment="TOP_CENTER" text="Baby Bees"/>
+                  <Label alignment="TOP_CENTER" text="Baby Bees" textFill="white"/>
                   <TextField fx:id="babyBeeCountField" text="6" prefWidth="100" maxWidth="100"/>
                </VBox>
                <VBox alignment="TOP_CENTER">
                   <style>
                      -fx-background-color: white
+                    
                   </style>
-                  <Label alignment="TOP_CENTER" text="Big Bees"/>
+                  <Label alignment="TOP_CENTER" text="Big Bees" textFill="white"/>
                   <TextField fx:id="bigBeeCountField" text="6"  prefWidth="100" maxWidth="100"/>
                </VBox>
                <Button alignment="CENTER" text="Set Defaults" onAction="#setDefaults"/>
@@ -65,9 +71,10 @@
          <VBox id="natureBookPane" fx:id="natureBookVBox" prefHeight="700.0" prefWidth="200.0" alignment="TOP_CENTER" spacing="5">
             <style>
                -fx-background-color: white
+                    
             </style>
             <children>
-               <Label layoutX="50.0" layoutY="550.0" scaleZ="2.0" text="Nature Book" textFill="black" translateZ="1.0" alignment="TOP_CENTER">
+               <Label layoutX="50.0" layoutY="550.0" scaleZ="2.0" text="Nature Book" textFill="white" translateZ="1.0" alignment="TOP_CENTER">
                   <font>
                      <Font name="Poor Richard" size="18.0" />
                   </font>
