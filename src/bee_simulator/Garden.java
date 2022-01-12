@@ -14,8 +14,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-import java.awt.event.ActionEvent;
-import java.beans.EventHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
