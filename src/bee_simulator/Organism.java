@@ -88,6 +88,9 @@ public abstract class Organism {
         garden.getChildren().add(organismContainer);
     }
 
+    public void removeFromGarden(Pane garden)  {
+        garden.getChildren().remove(organismContainer);
+    }
     //-------- ABSTRACT METHODS
 
     public abstract void collide(Organism otherOrganism);
@@ -102,7 +105,6 @@ public abstract class Organism {
             organismContainer.setLayoutX(Garden.GARDEN_X_PADDING + centerX - collisionRadius);
             organismContainer.setLayoutY(Garden.GARDEN_Y_PADDING + centerY - collisionRadius - (ENERGY_BAR_HEIGHT));
         }
-//        organismContainer.setBorder(new Border(new BorderStroke(Color.RED, BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1))));
         drawEnergy();
     }
 

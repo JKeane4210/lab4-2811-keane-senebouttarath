@@ -98,6 +98,10 @@ public abstract class Bee extends Organism {
         this.movementPattern = movementPattern;
    }
 
+   public BeeMovementPattern getMovementPattern() {
+        return movementPattern;
+   }
+
    public int getMoveDistance() {
         return moveDistance;
    }
