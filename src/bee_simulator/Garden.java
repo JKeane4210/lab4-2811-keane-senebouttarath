@@ -155,7 +155,7 @@ public class Garden {
         List<Bee> beesToRemove = new ArrayList<>();
         List<Bee> beesToAdd = new ArrayList<>();
         bees.forEach((bee) -> {
-            if (bee instanceof BabyBee && ((BabyBee) bee).isGrownUp()) {
+            if (bee instanceof BabyBee && ((BabyBee) bee).canGrowUp()) {
                 BigBee newBigBee = ((BabyBee) bee).growUp();
 
                 bee.removeFromGarden(theGarden);

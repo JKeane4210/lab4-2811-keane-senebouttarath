@@ -35,7 +35,7 @@ public class BabyBee extends Bee {
     /**
      * Determines whether the baby bee is grown up
      */
-    private boolean isGrownUp = false;
+    private boolean canGrowUp = false;
 
     //---------------- METHODS ----------------\\
 
@@ -62,23 +62,29 @@ public class BabyBee extends Bee {
 
     /**
      * Grows up the baby bee into a newly created big bee and carries over the movement pattern
-     * Returns the optional BigBee that can replace the BabyBee
+     * Returns the BigBee that can replace the BabyBee
      *
-     * @return The optional BigBee object that is a "grown up" version of the baby bee
+     * @return The BigBee object that is a "grown up" version of the baby bee
      */
     public BigBee growUp() {
         BigBee bigBee = new BigBee(this);
         movementPattern.setBee(bigBee);
-        isGrownUp = true;
         return bigBee;
+    }
+
+    public void update() {
+        if (energy >= maxEnergy) {
+            canGrowUp = true;
+        }
+        super.update();
     }
 
     /**
      * Returns whether the baby bee is grown up.
      * @return If the bee is grown up or not
      */
-    public boolean isGrownUp() {
-        return isGrownUp;
+    public boolean canGrowUp() {
+        return canGrowUp;
     }
 
 }   //end class BabyBee
