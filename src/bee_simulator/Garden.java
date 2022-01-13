@@ -68,6 +68,9 @@ public class Garden {
         update();
     }
 
+    /**
+     * Plants the garden with our preferred default settings.
+     */
     @FXML
     public void setDefaults() {
         roseCountField.setText("" + DEFAULT_ROSES);
@@ -75,13 +78,6 @@ public class Garden {
         babyBeeCountField.setText("" + DEFAULT_BABY_BEES);
         bigBeeCountField.setText("" + DEFAULT_BIG_BEES);
         plantGarden();
-    }
-
-    private BeeMovementPattern generateNewMovementPattern(Bee bee) {
-        int movementType = (int) (Math.random() * 2);
-        return movementType % 2 == 0 && flowers.size() > 0 ?
-                new FlowerOrientedMovement(bee, this) :
-                new RandomLineMovement(bee);
     }
 
     @FXML
@@ -127,6 +123,9 @@ public class Garden {
         }
     }
 
+    /**
+     * Puts all the bees in the garden.
+     */
     public void initializeBees() {
         for (Bee bee: bees) {
             bee.addToGarden(theGarden);
@@ -136,6 +135,9 @@ public class Garden {
         }
     }
 
+    /**
+     * Puts all the flowers in the garden.
+     */
     public void initializeFlowers() {
         for (Flower flower: flowers) {
             flower.addToGarden(theGarden);
@@ -144,6 +146,10 @@ public class Garden {
         }
     }
 
+    /**
+     * Updates the garden by one "tick", updating all bees,
+     * flowers, and collisions that occurred during that tick.
+     */
     public void update() {
         // BABIES GROWING UP
         List<Bee> beesToRemove = new ArrayList<>();
@@ -175,9 +181,24 @@ public class Garden {
         draw();
     }
 
+    /**
+     * Draws all the bees and flowers onto the GUI
+     */
     public void draw() {
         bees.forEach(Bee::draw);
         flowers.forEach(Flower::draw);
+    }
+
+    /**
+     * Generates a random movement pattern for a bee to follow
+     * @param bee The bee that the movement strategy will be moving
+     * @return The movement pattern for the bee
+     */
+    private BeeMovementPattern generateNewMovementPattern(Bee bee) {
+        int movementType = (int) (Math.random() * 2);
+        return movementType % 2 == 0 && flowers.size() > 0 ?
+                new FlowerOrientedMovement(bee, this) :
+                new RandomLineMovement(bee);
     }
 
     public List<Flower> getFlowers() {
