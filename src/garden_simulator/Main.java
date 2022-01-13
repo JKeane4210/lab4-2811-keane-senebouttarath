@@ -5,7 +5,7 @@
  * Author:     Jonathan Keane & Kyle Senebouttarath
  * Date:       1/6/22
  */
-package bee_simulator;
+package garden_simulator;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

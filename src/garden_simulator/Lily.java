@@ -5,7 +5,7 @@
  * Author:     Jonathan Keane & Kyle Senebouttarath
  * Date:       1/6/22
  */
-package bee_simulator;
+package garden_simulator;
 
 /**
  * A Lily is a type of flower that is responsible for giving energy to a bee with it collides with one.
@@ -24,7 +24,7 @@ public class Lily extends Flower {
     private static final int LILY_HEALTH_REGEN = 2;
 
     public Lily(int centerX, int centerY, boolean shouldDrawEnergy) {
-        super(centerX, centerY, LILY_COLLISION_RADIUS, LILY_MAX_HEALTH, LILY_INITIAL_HEALTH, "Assets/lily.png", LILY_DESCRIPTION, shouldDrawEnergy);
+        super(centerX, centerY, LILY_COLLISION_RADIUS, LILY_MAX_HEALTH, LILY_INITIAL_HEALTH, "assets/lily.png", LILY_DESCRIPTION, shouldDrawEnergy);
     }
 
     public Lily(int centerX, int centerY) {

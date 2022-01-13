@@ -5,7 +5,7 @@
  * Author:     Jonathan Keane & Kyle Senebouttarath
  * Date:       1/6/22
  */
-package bee_simulator;
+package garden_simulator;
 
 import javafx.scene.effect.ColorAdjust;
 
@@ -32,7 +32,7 @@ public class BigBee extends Bee {
     private static final int MAX_ENERGY = 300;          //max energy
     private static final int INIT_ENERGY = 200;         //initial energy
     private static final int MOVE_DISTANCE = 20;        //15 pixels per update
-    private static final String IMG = "./Assets/bee.png";     //Img representation of the bee
+    private static final String IMG = "./assets/bee.png";     //Img representation of the bee
     private static final String DESC = "A grown up bee with more health, but it is slower than the baby bee. " +
             "As they grow old, they start to lose speed.";      //Bee desc
 

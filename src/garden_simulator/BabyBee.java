@@ -5,7 +5,7 @@
  * Author:     Jonathan Keane & Kyle Senebouttarath
  * Date:       1/6/22
  */
-package bee_simulator;
+package garden_simulator;
 
 /**
  * The BabyBee is a type of bee that is a small bee. It has a small amount of energy, but it’s faster and has a
@@ -26,7 +26,7 @@ public class BabyBee extends Bee {
     private static final int MAX_ENERGY = 200;              //max energy. Once it, the bee grows up!
     private static final int INIT_ENERGY = 130;             //Starting energy of the baby bee
     private static final int MOVE_DISTANCE = 30;            //The baby bee moves faster!
-    private static final String IMG = "./Assets/babybee.png";       //The img source of the baby bee
+    private static final String IMG = "./assets/babybee.png";       //The img source of the baby bee
     private static final String DESC = "A bee with a small amount of health, but is very fast. If it reaches full health, it becomes a big bee.";     //Description
 
     //---------------- ATTRIBUTES ----------------\\

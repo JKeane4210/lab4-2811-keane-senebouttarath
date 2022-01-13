@@ -5,7 +5,7 @@
  * Author:     Jonathan Keane & Kyle Senebouttarath
  * Date:       1/6/22
  */
-package bee_simulator;
+package garden_simulator;
 
 /**
  * A type of flower that has the responsibility of taking away the energy from a bee when it collides with one
@@ -25,7 +25,7 @@ public class Rose extends Flower {
     private static final String ROSE_DESCRIPTION = "Thorny flower. Damages bees that visit it if it has enough energy to do so.";
 
     public Rose(int centerX, int centerY, boolean shouldDrawEnergy) {
-        super(centerX, centerY, ROSE_COLLISION_RADIUS, ROSE_MAX_HEALTH, ROSE_INITIAL_HEALTH, "Assets/rose.png", ROSE_DESCRIPTION, shouldDrawEnergy);
+        super(centerX, centerY, ROSE_COLLISION_RADIUS, ROSE_MAX_HEALTH, ROSE_INITIAL_HEALTH, "assets/rose.png", ROSE_DESCRIPTION, shouldDrawEnergy);
     }
 
     public Rose(int centerX, int centerY) {
