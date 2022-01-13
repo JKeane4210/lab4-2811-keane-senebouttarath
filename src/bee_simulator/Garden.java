@@ -172,9 +172,12 @@ public class Garden {
         flowers.forEach(Flower::update);
         bees.removeIf(bee -> !bee.isAlive());
         // HANDLING COLLISIONS
-        IntStream.range(0, bees.size()).forEach(index -> {
-            Bee bee = bees.get(index);
-            bees.stream().skip(index + 1).filter(bee::isCollided).forEach(bee::collide);
+        bees.forEach((bee) -> {
+            bees.forEach((secondBee) -> {
+                if (!bee.equals(secondBee) && bee.isCollided(secondBee)) {
+                    bee.collide(secondBee);
+                }
+            });
         });
         bees.stream().filter(Bee::isAlive).forEach(bee ->
                 flowers.stream().filter(bee::isCollided).forEach(bee::collide));
