@@ -10,7 +10,6 @@ package bee_simulator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import java.util.ArrayList;
@@ -62,7 +61,7 @@ public class Garden {
     }
 
     @FXML
-    public void onKeyPressed(KeyEvent keyEvent) {
+    public void onKeyPressed() {
         update();
     }
 
@@ -170,13 +169,11 @@ public class Garden {
         flowers.forEach(Flower::update);
         bees.removeIf(bee -> !bee.isAlive());
         // HANDLING COLLISIONS
-        bees.forEach((bee) -> {
-            bees.forEach((secondBee) -> {
-                if (!bee.equals(secondBee) && bee.isCollided(secondBee)) {
-                    bee.collide(secondBee);
-                }
-            });
-        });
+        bees.forEach((bee) -> bees.forEach((secondBee) -> {
+            if (!bee.equals(secondBee) && bee.isCollided(secondBee)) {
+                bee.collide(secondBee);
+            }
+        }));
         bees.stream().filter(Bee::isAlive).forEach(bee ->
                 flowers.stream().filter(bee::isCollided).forEach(bee::collide));
         draw();
@@ -191,7 +188,8 @@ public class Garden {
     }
 
     /**
-     * Generates a random movement pattern for a bee to follow
+     * Generates a random movement pattern for a bee to follow (either
+     * flower oriented or circular)
      * @param bee The bee that the movement strategy will be moving
      * @return The movement pattern for the bee
      */
@@ -199,7 +197,7 @@ public class Garden {
         int movementType = (int) (Math.random() * 2);
         return movementType % 2 == 0 && flowers.size() > 0 ?
                 new FlowerOrientedMovement(bee, this) :
-                new RandomLineMovement(bee);
+                new CircularMovement(bee);
     }
 
     public List<Flower> getFlowers() {

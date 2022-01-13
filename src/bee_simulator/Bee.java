@@ -162,7 +162,7 @@ public abstract class Bee extends Organism {
         organismContainer.getChildren().removeAll(energyBar, energyBackgroundBar, energyBarText);
         ColorAdjust adj = new ColorAdjust();
         adj.setSaturation(-1.0);
-        adj.setBrightness(-0.5);
+        adj.setBrightness(-0.7);
         organismImage.setEffect(adj);
     }
 

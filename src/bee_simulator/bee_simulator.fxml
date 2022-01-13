@@ -19,7 +19,6 @@
    <rowConstraints>
       <RowConstraints />
    </rowConstraints>
-   <children>
       <HBox>
          <VBox>
             <style>
@@ -66,14 +65,11 @@
             <style>
                -fx-background-color: white
             </style>
-            <children>
                <Label layoutX="50.0" layoutY="550.0" scaleZ="2.0" text="Nature Book" textFill="white" translateZ="1.0" alignment="TOP_CENTER">
                   <font>
                      <Font name="Poor Richard" size="18.0" />
                   </font>
                </Label>
-            </children>
          </VBox>
       </HBox>
-   </children>
 </GridPane>
