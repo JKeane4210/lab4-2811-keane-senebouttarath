@@ -142,10 +142,11 @@ public abstract class Bee extends Organism {
 
     /**
      * Handles the collision interaction from this bee to another bee
-     *
+     * When another bee hits this bee, decrease energy and reset the new target
      */
-    public void interactWithBee() {
+    public void hitByBee() {
         decreaseEnergy(beeCollisionEnergyLoss);     //The other bee should decrease its energy as well
+        setTarget();
     }
 
     /**
@@ -184,7 +185,7 @@ public abstract class Bee extends Organism {
             ((Flower)otherOrganism).interactWithBee(this);
             lastVisitedFlower = (Flower)otherOrganism;
         } else if (otherOrganism instanceof Bee) {
-            ((Bee)otherOrganism).interactWithBee();
+            hitByBee();
         }
     }
 
