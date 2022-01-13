@@ -22,7 +22,6 @@ public class BabyBee extends Bee {
      * Amount of energy lost when bees collide
      */
     private static final int BEE_COLLISION_ENERGY_LOSS = 10;
-
     private static final int COLLISION_RADIUS = 12;         //24 pixels thick
     private static final int MAX_ENERGY = 200;              //max energy. Once it, the bee grows up!
     private static final int INIT_ENERGY = 130;             //Starting energy of the baby bee
