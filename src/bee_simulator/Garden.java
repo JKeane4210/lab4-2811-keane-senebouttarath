@@ -31,7 +31,7 @@ public class Garden {
     private static final int DEFAULT_BABY_BEES = 6;
     private static final int DEFAULT_BIG_BEES = 6;
     private static final int DEFAULT_ROSES = 4;
-    private static final int DEFAULT_LILIES = 8;
+    private static final int DEFAULT_LILIES = 10;
 
     List<Flower> flowers = new ArrayList<>();
     List<Bee> bees = new ArrayList<>();

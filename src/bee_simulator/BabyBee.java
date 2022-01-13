@@ -27,7 +27,7 @@ public class BabyBee extends Bee {
     private static final int INIT_ENERGY = 130;             //Starting energy of the baby bee
     private static final int MOVE_DISTANCE = 30;            //The baby bee moves faster!
     private static final String IMG = "./Assets/babybee.png";       //The img source of the baby bee
-    private static final String DESC = "A bee with a small amount of fast, but is very fast. If it reaches full health, it becomes a big bee.";     //Description
+    private static final String DESC = "A bee with a small amount of health, but is very fast. If it reaches full health, it becomes a big bee.";     //Description
 
     //---------------- ATTRIBUTES ----------------\\
 

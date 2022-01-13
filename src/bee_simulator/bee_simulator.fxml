@@ -42,7 +42,7 @@
                      -fx-background-color: white
                   </style>
                   <Label alignment="TOP_CENTER" text="Lilies" textFill="black"/>
-                  <TextField fx:id="lilyCountField" text="8" prefWidth="100" maxWidth="100"/>
+                  <TextField fx:id="lilyCountField" text="10" prefWidth="100" maxWidth="100"/>
                </VBox>
                <VBox alignment="TOP_CENTER">
                   <style>

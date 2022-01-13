@@ -51,7 +51,7 @@ public class NatureBook {
         HBox nameAndPictureHBox = new HBox();
         nameAndPictureHBox.setAlignment(Pos.CENTER);
         nameAndPictureHBox.setSpacing(20);
-        nameAndPictureHBox.setPadding(new Insets(0, 0, 5, 0));
+        nameAndPictureHBox.setPadding(new Insets(0, 0, 2, 0));
         // NAME
         Label nameLabel = new Label(name);
         nameLabel.setFont(Font.font("Verdana", FontWeight.BOLD, 14));
@@ -80,7 +80,7 @@ public class NatureBook {
      * Draws nature book onto the GUI
      */
     public void draw() {
-        addOrganismInfo(natureBookBigBee, "Big Bee", "Speed: " + natureBookBigBee.getMoveDistance());
+        addOrganismInfo(natureBookBigBee, "Big Bee", "Initial Speed: " + natureBookBigBee.getMoveDistance());
         addOrganismInfo(natureBookBabyBee, "Baby Bee",
                 "Speed: " + natureBookBabyBee.getMoveDistance());
         addOrganismInfo(natureBookRose, "Rose",
