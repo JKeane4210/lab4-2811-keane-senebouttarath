@@ -7,6 +7,11 @@
  */
 package bee_simulator;
 
+/**
+ * An abstract class representing the movement pattern for a bee to follow
+ *
+ * @author Jonathan Keane (Kyle Senebouttarath created moveBee method)
+ */
 public abstract class BeeMovementPattern {
     protected Bee bee;
 
@@ -14,6 +19,9 @@ public abstract class BeeMovementPattern {
         this.bee = bee;
     }
 
+    /**
+     * Moves a bee in the direction of it's target at its current speed
+     */
     public void moveBee() {
         int xOffset = bee.targetX - bee.centerX;
         int yOffset = bee.targetY - bee.centerY;
@@ -27,11 +35,18 @@ public abstract class BeeMovementPattern {
         bee.centerY += yMoveDist;
     }
 
+    /**
+     * Returns whether the bee has achieved the destination it's seeking
+     * @return True if target achieved, false otherwise
+     */
+    public abstract boolean targetAchieved();
+
+    /**
+     * Updates the target of the Bee to a new target
+     */
+    public abstract void retarget();
+
     public void setBee(Bee bee) {
         this.bee = bee;
     }
-
-    public abstract boolean targetAchieved();
-
-    public abstract void retarget();
 }

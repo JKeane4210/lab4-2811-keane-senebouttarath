@@ -32,6 +32,10 @@ public class Rose extends Flower {
         this(centerX, centerY, true);
     }
 
+    /**
+     * Decrease the energy of both the rose and the bee if enough energy to do so
+     * @param bee The bee that collided with the flower
+     */
     @Override
     public void interactWithBee(Bee bee) {
         if (energy >= ROSE_HEALTH_LOSS) {
@@ -40,6 +44,9 @@ public class Rose extends Flower {
         }
     }
 
+    /**
+     * Increases rose health by a "tick's" worth of energy
+     */
     @Override
     public void update() {
         increaseEnergy(ROSE_HEALTH_REGEN);

@@ -25,6 +25,10 @@ public abstract class Flower extends Organism {
         this(centerX, centerY, collisionRadius, maxEnergy, energy, imgUrl, description, true);
     }
 
+    /**
+     * How a flower will act when it collides with another organism
+     * @param otherOrganism The other organism that was collided with
+     */
     @Override
     public void collide(Organism otherOrganism) {
         if (otherOrganism instanceof Bee) {
@@ -32,5 +36,9 @@ public abstract class Flower extends Organism {
         }
     }
 
+    /**
+     * How a flower should interact with a bee that collides with it
+     * @param bee The bee that collided with the flower
+     */
     public abstract void interactWithBee(Bee bee);
 }

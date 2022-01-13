@@ -38,6 +38,12 @@ public class NatureBook {
         this.mainVBox = mainVBox;
     }
 
+    /**
+     * Adds an organism to the nature book
+     * @param organism The organism
+     * @param name It's name
+     * @param extraFields The extra fields to include
+     */
     private void addOrganismInfo(Organism organism, String name, String ... extraFields) {
         VBox organismVBox = new VBox();
         organismVBox.setAlignment(Pos.TOP_CENTER);
@@ -70,6 +76,9 @@ public class NatureBook {
         mainVBox.getChildren().add(organismVBox);
     }
 
+    /**
+     * Draws nature book onto the GUI
+     */
     public void draw() {
         addOrganismInfo(natureBookBigBee, "Big Bee", "Speed: " + natureBookBigBee.getMoveDistance());
         addOrganismInfo(natureBookBabyBee, "Baby Bee",

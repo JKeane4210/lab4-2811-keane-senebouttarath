@@ -72,6 +72,10 @@ public class BabyBee extends Bee {
         return bigBee;
     }
 
+    /**
+     * Updates the baby bee, including if it can grow up
+     */
+    @Override
     public void update() {
         if (energy >= maxEnergy) {
             canGrowUp = true;

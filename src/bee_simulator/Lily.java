@@ -31,10 +31,17 @@ public class Lily extends Flower {
         this(centerX, centerY, true);
     }
 
+    /**
+     * Increase the lily health by a "tick's" worth of energy
+     */
     public void update() {
         increaseEnergy(LILY_HEALTH_REGEN);
     }
 
+    /**
+     * Increases the bee energy and decrease the lily's energy if enough energy to do so
+     * @param bee The bee that collided with the flower
+     */
     @Override
     public void interactWithBee(Bee bee) {
         if (energy >= LILY_HEALTH_LOSS) {

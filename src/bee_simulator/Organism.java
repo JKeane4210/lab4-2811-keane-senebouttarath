@@ -45,7 +45,7 @@ public abstract class Organism {
     //The organism's description
     protected String description;
 
-    //The JavaFX implementation stuff for organims
+    //The JavaFX implementation stuff for organisms
     protected Pane organismContainer;
     protected ImageView organismImage;
     protected Rectangle energyBackgroundBar;
